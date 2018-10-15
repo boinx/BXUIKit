@@ -5,6 +5,10 @@ before_install:
 - gem install xcpretty
 - brew install jq
 install: sh download_bxswiftutils.sh
+env:
+  global:
+    # GH_TOKEN
+    - secure: cd5/746x8YL71FHEEqVZhj/jfj2fRms9/F5Lh7c/dbNAQ/RwHIHQL9nXELRgImQAzRS8Jvm1Om3tNl5iJ7/I71Ij/wLDp3ryQso/vQGd7c6sMODvVPYnXhXiQ7SVxxyYxpnp8v//87C6NEczmmCoY2iRSHDWBZI3romg/T5TYc9Y979JYy28YvoTUInaySTmOHikp7Sa8x17zdhgAFqiA4UO4qfR48DloJsc6qcvhXA8QEvW9exrvTkvGvpiFM1Ag7H/7+iXterY2NaFJlyyhqdU5yVothEmLXTjsauJycc3jiQuHff2dUTyaphaPCk4Ldg9bu2wd6q7f+t7JWWHRpf96wBvK3wWlhMRgtss3J32BqoUgPDzTa67eNc3XwkFeML6icqRPeypPaOO6+I8Qm4h/uexXXycuk2iv9DvH29S1JPtx4BHfITzkDjIb9u013Xl7LpBaO39R3CYUiJaMsYb3tDYqDgnyqJLPDHVMUB0TYBYTEEew6zTG1XRtyH29fZ+pEtWAqwR9vFhI11x3Y3dAuTA2A7Fv9wE7i/d0MGl9KrCuT6+3TpkRtXa+EMZ6mbOpPorymTX4qHFwmIK9JlxSJ4L4eP1g036Oin4ssY15A+a9vVeF8MhT43aEfUEZrqfM5kbot2bqfnb738ypdUMbBbkMPTIWJaJC8gselA=
 matrix:
   include:
   - osx_image: xcode9.2
