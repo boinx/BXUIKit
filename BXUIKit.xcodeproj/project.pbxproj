@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		48472C012174579300549686 /* BXUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472BF72174579200549686 /* BXUIKit.framework */; };
-		48472C062174579300549686 /* BXUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C052174579300549686 /* BXUIKitTests.swift */; };
 		48472C082174579300549686 /* BXUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 48472BFA2174579200549686 /* BXUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -27,8 +26,11 @@
 		48472BFA2174579200549686 /* BXUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXUIKit.h; sourceTree = "<group>"; };
 		48472BFB2174579200549686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48472C002174579300549686 /* BXUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BXUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48472C052174579300549686 /* BXUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXUIKitTests.swift; sourceTree = "<group>"; };
 		48472C072174579300549686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48472C112174583300549686 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		48472C122174585A00549686 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		48472C132174585A00549686 /* STYLEGUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = STYLEGUIDE.md; sourceTree = "<group>"; };
+		48472C142174585A00549686 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,10 @@
 		48472BED2174579200549686 = {
 			isa = PBXGroup;
 			children = (
+				48472C122174585A00549686 /* README.md */,
+				48472C132174585A00549686 /* STYLEGUIDE.md */,
+				48472C142174585A00549686 /* LICENSE */,
+				48472C112174583300549686 /* .travis.yml */,
 				48472BF92174579200549686 /* BXUIKit */,
 				48472C042174579300549686 /* BXUIKitTests */,
 				48472BF82174579200549686 /* Products */,
@@ -80,7 +86,6 @@
 		48472C042174579300549686 /* BXUIKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				48472C052174579300549686 /* BXUIKitTests.swift */,
 				48472C072174579300549686 /* Info.plist */,
 			);
 			path = BXUIKitTests;
@@ -201,7 +206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48472C062174579300549686 /* BXUIKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
