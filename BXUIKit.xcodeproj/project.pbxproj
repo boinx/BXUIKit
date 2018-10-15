@@ -15,7 +15,6 @@
 		48472C3721746B8D00549686 /* NSMenuItem+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3621746B8D00549686 /* NSMenuItem+ConvenienceInit.swift */; };
 		48472C3A21746BDF00549686 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3921746BDE00549686 /* NSArrayController+UIKit.swift */; };
 		48472C3D21746BF100549686 /* AVAudioPlayer+Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3C21746BF100549686 /* AVAudioPlayer+Play.swift */; };
-		48472C4121746E0F00549686 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472C4021746E0F00549686 /* BXSwiftUtils.framework */; };
 		48472C4321746E1700549686 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472C4221746E1700549686 /* BXSwiftUtils.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		481A25762174886400FB8E9A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		48472BF72174579200549686 /* BXUIKit_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472BFA2174579200549686 /* BXUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXUIKit.h; sourceTree = "<group>"; };
 		48472BFB2174579200549686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48472C4121746E0F00549686 /* BXSwiftUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +99,7 @@
 				48472C132174585A00549686 /* STYLEGUIDE.md */,
 				48472C142174585A00549686 /* LICENSE */,
 				48472C112174583300549686 /* .travis.yml */,
+				481A25762174886400FB8E9A /* .gitignore */,
 				48472BF92174579200549686 /* BXUIKit */,
 				48472C042174579300549686 /* BXUIKitTests */,
 				48472BF82174579200549686 /* Products */,
@@ -439,6 +439,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -512,6 +513,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -551,6 +553,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks/macOS";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = BXUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -578,6 +581,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks/macOS";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = BXUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -639,6 +643,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks/iOS";
 				INFOPLIST_FILE = BXUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -666,6 +671,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks/iOS";
 				INFOPLIST_FILE = BXUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

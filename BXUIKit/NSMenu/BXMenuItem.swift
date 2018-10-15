@@ -8,6 +8,9 @@
 
 import Cocoa
 
+// FIXME: This import is only for testing the "weak-linked" BXSwiftUtils for macOS builds. It is not actually needed in this file.
+import BXSwiftUtils
+
 /**
  A NSMenuItem alternative (subclass, in fact) that, instead of taking a target and selector, uses a handler closure
  that will be called with `representedObject` as arugment on selection.

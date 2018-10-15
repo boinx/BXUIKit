@@ -4,7 +4,4 @@
    <FileRef
       location = "container:BXUIKit.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:ThirdParty/BXSwiftUtils.xcodeproj">
-   </FileRef>
 </Workspace>
