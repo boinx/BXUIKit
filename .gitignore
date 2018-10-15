@@ -1,2 +1,3 @@
 # Ingore binary frameworks in /Frameworks directory
-Frameworks/*/*.framework
+Frameworks/**/*
+!.gitkeep

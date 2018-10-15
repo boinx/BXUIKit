@@ -37,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		481A25762174886400FB8E9A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		481A257E2174CC3C00FB8E9A /* download_bxswiftutils.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = download_bxswiftutils.sh; sourceTree = "<group>"; };
 		48472BF72174579200549686 /* BXUIKit_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472BFA2174579200549686 /* BXUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXUIKit.h; sourceTree = "<group>"; };
 		48472BFB2174579200549686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,7 +93,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		48472BED2174579200549686 = {
+		481A257F2174CC4600FB8E9A /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				48472C122174585A00549686 /* README.md */,
@@ -100,6 +101,15 @@
 				48472C142174585A00549686 /* LICENSE */,
 				48472C112174583300549686 /* .travis.yml */,
 				481A25762174886400FB8E9A /* .gitignore */,
+				481A257E2174CC3C00FB8E9A /* download_bxswiftutils.sh */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		48472BED2174579200549686 = {
+			isa = PBXGroup;
+			children = (
+				481A257F2174CC4600FB8E9A /* Config */,
 				48472BF92174579200549686 /* BXUIKit */,
 				48472C042174579300549686 /* BXUIKitTests */,
 				48472BF82174579200549686 /* Products */,
