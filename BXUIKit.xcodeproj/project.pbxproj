@@ -10,6 +10,11 @@
 		48472C012174579300549686 /* BXUIKit_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472BF72174579200549686 /* BXUIKit_macOS.framework */; };
 		48472C082174579300549686 /* BXUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 48472BFA2174579200549686 /* BXUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48472C2321745BEF00549686 /* BXUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472C1A21745BEF00549686 /* BXUIKit_iOS.framework */; };
+		48472C3321746B7800549686 /* BXMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3221746B7800549686 /* BXMenuItem.swift */; };
+		48472C3521746B8500549686 /* NSMenu+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3421746B8500549686 /* NSMenu+Concatenation.swift */; };
+		48472C3721746B8D00549686 /* NSMenuItem+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3621746B8D00549686 /* NSMenuItem+ConvenienceInit.swift */; };
+		48472C3A21746BDF00549686 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3921746BDE00549686 /* NSArrayController+UIKit.swift */; };
+		48472C3D21746BF100549686 /* AVAudioPlayer+Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3C21746BF100549686 /* AVAudioPlayer+Play.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +46,11 @@
 		48472C142174585A00549686 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		48472C1A21745BEF00549686 /* BXUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472C2221745BEF00549686 /* BXUIKitTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BXUIKitTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48472C3221746B7800549686 /* BXMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMenuItem.swift; sourceTree = "<group>"; };
+		48472C3421746B8500549686 /* NSMenu+Concatenation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenu+Concatenation.swift"; sourceTree = "<group>"; };
+		48472C3621746B8D00549686 /* NSMenuItem+ConvenienceInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+ConvenienceInit.swift"; sourceTree = "<group>"; };
+		48472C3921746BDE00549686 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
+		48472C3C21746BF100549686 /* AVAudioPlayer+Play.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Play.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +114,10 @@
 		48472BF92174579200549686 /* BXUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				48472C3121746B5300549686 /* NSMenu */,
+				48472C3E21746C0E00549686 /* NSUIView */,
+				48472C3B21746BE600549686 /* AVAudioPlayer */,
+				48472C3821746BC400549686 /* NSArrayController */,
 				48472BFA2174579200549686 /* BXUIKit.h */,
 				48472BFB2174579200549686 /* Info.plist */,
 			);
@@ -116,6 +130,39 @@
 				48472C072174579300549686 /* Info.plist */,
 			);
 			path = BXUIKitTests;
+			sourceTree = "<group>";
+		};
+		48472C3121746B5300549686 /* NSMenu */ = {
+			isa = PBXGroup;
+			children = (
+				48472C3221746B7800549686 /* BXMenuItem.swift */,
+				48472C3421746B8500549686 /* NSMenu+Concatenation.swift */,
+				48472C3621746B8D00549686 /* NSMenuItem+ConvenienceInit.swift */,
+			);
+			path = NSMenu;
+			sourceTree = "<group>";
+		};
+		48472C3821746BC400549686 /* NSArrayController */ = {
+			isa = PBXGroup;
+			children = (
+				48472C3921746BDE00549686 /* NSArrayController+UIKit.swift */,
+			);
+			path = NSArrayController;
+			sourceTree = "<group>";
+		};
+		48472C3B21746BE600549686 /* AVAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				48472C3C21746BF100549686 /* AVAudioPlayer+Play.swift */,
+			);
+			path = AVAudioPlayer;
+			sourceTree = "<group>";
+		};
+		48472C3E21746C0E00549686 /* NSUIView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NSUIView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,12 +270,14 @@
 				TargetAttributes = {
 					48472BF62174579200549686 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					48472BFF2174579300549686 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 					48472C1921745BEF00549686 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					48472C2121745BEF00549686 = {
 						CreatedOnToolsVersion = 10.0;
@@ -291,6 +340,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48472C3721746B8D00549686 /* NSMenuItem+ConvenienceInit.swift in Sources */,
+				48472C3521746B8500549686 /* NSMenu+Concatenation.swift in Sources */,
+				48472C3321746B7800549686 /* BXMenuItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +357,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48472C3D21746BF100549686 /* AVAudioPlayer+Play.swift in Sources */,
+				48472C3A21746BDF00549686 /* NSArrayController+UIKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +527,7 @@
 		48472C0C2174579300549686 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -491,6 +546,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4;
 			};
 			name = Debug;
@@ -498,6 +554,7 @@
 		48472C0D2174579300549686 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -523,6 +580,7 @@
 		48472C0F2174579300549686 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BXUIKitTests/Info.plist;
@@ -540,6 +598,7 @@
 		48472C102174579300549686 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BXUIKitTests/Info.plist;
@@ -557,6 +616,7 @@
 		48472C2C21745BEF00549686 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -574,6 +634,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -582,6 +643,7 @@
 		48472C2D21745BEF00549686 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -608,6 +670,7 @@
 		48472C2F21745BEF00549686 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BXUIKitTests/Info.plist;
@@ -628,6 +691,7 @@
 		48472C3021745BEF00549686 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BXUIKitTests/Info.plist;
