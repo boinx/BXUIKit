@@ -3,6 +3,7 @@ os: osx
 xcode_project: BXUIKit.xcodeproj
 before_install:
 - gem install xcpretty
+- brew install jq
 install: sh download_bxswiftutils.sh
 matrix:
   include:
