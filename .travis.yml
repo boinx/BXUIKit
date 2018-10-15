@@ -8,15 +8,15 @@ matrix:
   - osx_image: xcode9.2
     env: SCHEME="BXUIKit-macOS" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode9.2
-    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=11.2"
+    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=latest"
   - osx_image: xcode9.4
     env: SCHEME="BXUIKit-macOS" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode9.4
-    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=11.4"
+    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=latest"
   - osx_image: xcode10
     env: SCHEME="BXUIKit-macOS" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode10
-    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=12.0"
+    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=latest"
 script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build test | xcpretty
 notifications:
   slack:
