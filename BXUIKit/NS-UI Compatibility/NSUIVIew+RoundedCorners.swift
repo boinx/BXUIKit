@@ -6,6 +6,7 @@
 //  Copyright © 2018 Boinx Software Ltd. All rights reserved.
 //
 
+import QuartzCore.CoreAnimation
 import BXSwiftUtils
 
 public extension NSUIView
