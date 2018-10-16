@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "48472C1921745BEF00549686"
-               BuildableName = "BXUIKit_iOS.framework"
+               BuildableName = "BXUIKit.framework"
                BlueprintName = "BXUIKit-iOS"
                ReferencedContainer = "container:BXUIKit.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48472C1921745BEF00549686"
-            BuildableName = "BXUIKit_iOS.framework"
+            BuildableName = "BXUIKit.framework"
             BlueprintName = "BXUIKit-iOS"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48472C1921745BEF00549686"
-            BuildableName = "BXUIKit_iOS.framework"
+            BuildableName = "BXUIKit.framework"
             BlueprintName = "BXUIKit-iOS"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48472C1921745BEF00549686"
-            BuildableName = "BXUIKit_iOS.framework"
+            BuildableName = "BXUIKit.framework"
             BlueprintName = "BXUIKit-iOS"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>

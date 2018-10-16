@@ -16,9 +16,9 @@
 		481A25B72175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25B62175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift */; };
 		481A25B92175AD2600FB8E9A /* NSUIVIew+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25B82175AD2600FB8E9A /* NSUIVIew+RoundedCorners.swift */; };
 		481A25BA2175AD2900FB8E9A /* NSUIVIew+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25B82175AD2600FB8E9A /* NSUIVIew+RoundedCorners.swift */; };
-		48472C012174579300549686 /* BXUIKit_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472BF72174579200549686 /* BXUIKit_macOS.framework */; };
+		48472C012174579300549686 /* BXUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472BF72174579200549686 /* BXUIKit.framework */; };
 		48472C082174579300549686 /* BXUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 48472BFA2174579200549686 /* BXUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		48472C2321745BEF00549686 /* BXUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472C1A21745BEF00549686 /* BXUIKit_iOS.framework */; };
+		48472C2321745BEF00549686 /* BXUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472C1A21745BEF00549686 /* BXUIKit.framework */; };
 		48472C3321746B7800549686 /* BXMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3221746B7800549686 /* BXMenuItem.swift */; };
 		48472C3521746B8500549686 /* NSMenu+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3421746B8500549686 /* NSMenu+Concatenation.swift */; };
 		48472C3721746B8D00549686 /* NSMenuItem+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3621746B8D00549686 /* NSMenuItem+ConvenienceInit.swift */; };
@@ -52,7 +52,7 @@
 		481A25872175A04100FB8E9A /* NSUIView+Hierarchy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		481A25B62175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSEvent+ModifierKeys.swift"; sourceTree = "<group>"; };
 		481A25B82175AD2600FB8E9A /* NSUIVIew+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIVIew+RoundedCorners.swift"; sourceTree = "<group>"; };
-		48472BF72174579200549686 /* BXUIKit_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48472BF72174579200549686 /* BXUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472BFA2174579200549686 /* BXUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXUIKit.h; sourceTree = "<group>"; };
 		48472BFB2174579200549686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48472C002174579300549686 /* BXUIKitTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BXUIKitTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +61,7 @@
 		48472C122174585A00549686 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		48472C132174585A00549686 /* STYLEGUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = STYLEGUIDE.md; sourceTree = "<group>"; };
 		48472C142174585A00549686 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		48472C1A21745BEF00549686 /* BXUIKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48472C1A21745BEF00549686 /* BXUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472C2221745BEF00549686 /* BXUIKitTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BXUIKitTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472C3221746B7800549686 /* BXMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMenuItem.swift; sourceTree = "<group>"; };
 		48472C3421746B8500549686 /* NSMenu+Concatenation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenu+Concatenation.swift"; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48472C012174579300549686 /* BXUIKit_macOS.framework in Frameworks */,
+				48472C012174579300549686 /* BXUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48472C2321745BEF00549686 /* BXUIKit_iOS.framework in Frameworks */,
+				48472C2321745BEF00549686 /* BXUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,9 +153,9 @@
 		48472BF82174579200549686 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				48472BF72174579200549686 /* BXUIKit_macOS.framework */,
+				48472BF72174579200549686 /* BXUIKit.framework */,
 				48472C002174579300549686 /* BXUIKitTests-macOS.xctest */,
-				48472C1A21745BEF00549686 /* BXUIKit_iOS.framework */,
+				48472C1A21745BEF00549686 /* BXUIKit.framework */,
 				48472C2221745BEF00549686 /* BXUIKitTests-iOS.xctest */,
 			);
 			name = Products;
@@ -254,7 +254,7 @@
 			);
 			name = "BXUIKit-macOS";
 			productName = BXUIKit;
-			productReference = 48472BF72174579200549686 /* BXUIKit_macOS.framework */;
+			productReference = 48472BF72174579200549686 /* BXUIKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		48472BFF2174579300549686 /* BXUIKitTests-macOS */ = {
@@ -290,7 +290,7 @@
 			);
 			name = "BXUIKit-iOS";
 			productName = "BXUIKit-iOS";
-			productReference = 48472C1A21745BEF00549686 /* BXUIKit_iOS.framework */;
+			productReference = 48472C1A21745BEF00549686 /* BXUIKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		48472C2121745BEF00549686 /* BXUIKitTests-iOS */ = {
@@ -609,7 +609,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXUIKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = BXUIKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4;
@@ -637,7 +637,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXUIKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = BXUIKit;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4;
 			};
@@ -698,7 +698,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.BXUIKit-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = BXUIKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -726,7 +726,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.BXUIKit-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = BXUIKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4;
