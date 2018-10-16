@@ -20,43 +20,6 @@ import BXSwiftUtils
 
 #if os(iOS)
 
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-public let NSNoSelectionMarker = "NSNoSelectionMarker" as AnyObject
-public let NSMultipleValuesMarker = "NSMultipleValuesMarker" as AnyObject
-public let NSNotApplicableMarker = "NSNotApplicableMarker" as AnyObject
-
-public func NSIsControllerMarker(_ value:Any?) -> Bool
-{
-	let object = value as AnyObject
-
-	return	object === NSNoSelectionMarker ||
-			object === NSMultipleValuesMarker ||
-			object === NSNotApplicableMarker
-}
-
-public func NSIsMultipleValuesMarker(_ value:Any?) -> Bool
-{
-	let object = value as AnyObject
-	return	object === NSMultipleValuesMarker
-}
-
-public func NSIsNoSelectionMarker(_ value:Any?) -> Bool
-{
-	let object = value as AnyObject
-	return	object === NSNoSelectionMarker
-}
-
-public func NSIsNotApplicableMarker(_ value:Any?) -> Bool
-{
-	let object = value as AnyObject
-	return	object === NSNotApplicableMarker
-}
-
-
-
 //----------------------------------------------------------------------------------------------------------------------
 
 
