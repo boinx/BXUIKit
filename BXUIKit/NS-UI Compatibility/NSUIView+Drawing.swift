@@ -6,7 +6,16 @@
 //  Copyright © 2018 Boinx Software Ltd. All rights reserved.
 //
 
-import Foundation
+#if os(macOS)
+
+import AppKit
+
+#elseif os(iOS)
+
+import UIKit
+
+#endif
+
 
 public extension NSUIView
 {
