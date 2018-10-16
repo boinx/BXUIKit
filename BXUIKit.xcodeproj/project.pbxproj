@@ -13,6 +13,7 @@
 		481A258621759FF400FB8E9A /* NSUIView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A258421759FF400FB8E9A /* NSUIView+Drawing.swift */; };
 		481A25882175A04100FB8E9A /* NSUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25872175A04100FB8E9A /* NSUIView+Hierarchy.swift */; };
 		481A25892175A04100FB8E9A /* NSUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25872175A04100FB8E9A /* NSUIView+Hierarchy.swift */; };
+		481A25B72175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481A25B62175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift */; };
 		48472C012174579300549686 /* BXUIKit_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472BF72174579200549686 /* BXUIKit_macOS.framework */; };
 		48472C082174579300549686 /* BXUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 48472BFA2174579200549686 /* BXUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48472C2321745BEF00549686 /* BXUIKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472C1A21745BEF00549686 /* BXUIKit_iOS.framework */; };
@@ -47,6 +48,7 @@
 		481A258121759F6D00FB8E9A /* NSUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIView.swift; sourceTree = "<group>"; };
 		481A258421759FF400FB8E9A /* NSUIView+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Drawing.swift"; sourceTree = "<group>"; };
 		481A25872175A04100FB8E9A /* NSUIView+Hierarchy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Hierarchy.swift"; sourceTree = "<group>"; };
+		481A25B62175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSEvent+ModifierKeys.swift"; sourceTree = "<group>"; };
 		48472BF72174579200549686 /* BXUIKit_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472BFA2174579200549686 /* BXUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXUIKit.h; sourceTree = "<group>"; };
 		48472BFB2174579200549686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 			path = "NS-UI Compatibility";
 			sourceTree = "<group>";
 		};
+		481A25B52175AA6100FB8E9A /* NSEvent */ = {
+			isa = PBXGroup;
+			children = (
+				481A25B62175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift */,
+			);
+			path = NSEvent;
+			sourceTree = "<group>";
+		};
 		48472BED2174579200549686 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				481A258021759F5700FB8E9A /* NS-UI Compatibility */,
+				481A25B52175AA6100FB8E9A /* NSEvent */,
 				48472C3121746B5300549686 /* NSMenu */,
 				48472C3B21746BE600549686 /* AVAudioPlayer */,
 				48472C3821746BC400549686 /* NSArrayController */,
@@ -383,6 +394,7 @@
 				48472C3321746B7800549686 /* BXMenuItem.swift in Sources */,
 				481A25882175A04100FB8E9A /* NSUIView+Hierarchy.swift in Sources */,
 				481A258521759FF400FB8E9A /* NSUIView+Drawing.swift in Sources */,
+				481A25B72175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift in Sources */,
 				481A258221759F6D00FB8E9A /* NSUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
