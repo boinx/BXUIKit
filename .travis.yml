@@ -11,14 +11,6 @@ env:
     - secure: cd5/746x8YL71FHEEqVZhj/jfj2fRms9/F5Lh7c/dbNAQ/RwHIHQL9nXELRgImQAzRS8Jvm1Om3tNl5iJ7/I71Ij/wLDp3ryQso/vQGd7c6sMODvVPYnXhXiQ7SVxxyYxpnp8v//87C6NEczmmCoY2iRSHDWBZI3romg/T5TYc9Y979JYy28YvoTUInaySTmOHikp7Sa8x17zdhgAFqiA4UO4qfR48DloJsc6qcvhXA8QEvW9exrvTkvGvpiFM1Ag7H/7+iXterY2NaFJlyyhqdU5yVothEmLXTjsauJycc3jiQuHff2dUTyaphaPCk4Ldg9bu2wd6q7f+t7JWWHRpf96wBvK3wWlhMRgtss3J32BqoUgPDzTa67eNc3XwkFeML6icqRPeypPaOO6+I8Qm4h/uexXXycuk2iv9DvH29S1JPtx4BHfITzkDjIb9u013Xl7LpBaO39R3CYUiJaMsYb3tDYqDgnyqJLPDHVMUB0TYBYTEEew6zTG1XRtyH29fZ+pEtWAqwR9vFhI11x3Y3dAuTA2A7Fv9wE7i/d0MGl9KrCuT6+3TpkRtXa+EMZ6mbOpPorymTX4qHFwmIK9JlxSJ4L4eP1g036Oin4ssY15A+a9vVeF8MhT43aEfUEZrqfM5kbot2bqfnb738ypdUMbBbkMPTIWJaJC8gselA=
 matrix:
   include:
-  - osx_image: xcode9.2
-    env: SCHEME="BXUIKit-macOS" DESTINATION="platform=macOS,arch=x86_64"
-  - osx_image: xcode9.2
-    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=latest"
-  - osx_image: xcode9.4
-    env: SCHEME="BXUIKit-macOS" DESTINATION="platform=macOS,arch=x86_64"
-  - osx_image: xcode9.4
-    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=latest"
   - osx_image: xcode10
     env: SCHEME="BXUIKit-macOS" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode10
@@ -28,4 +20,4 @@ notifications:
   slack:
     template:
     - "%{repository_slug}@%{branch} (<%{compare_url}|%{commit}>) by %{author} %{result} in %{duration}"
-    secure: UovCzpghaeeBGXjTjvZGMr0jWpxwdOaT6tkGlzdOjwaMK8yS8EId7pP3/voe5FFt60t9QJtXi53dy//jccfCOKGDqmAyn71QnSG3Pw5wuBdNwTS+6EMWFJeJzcp/5mvbdxzfTUnmgdJYAUdcfQqcSdccQe/lPr9kvxO5nDuXGI+Tboofb2/DazktmRrbM8Dlq61q2jYrZ4KQihtBLlcl3+XZsWL2+Qfs4arG5S7DZjhrDWpTUYw8FPvumsIZ8j4PuvfKDEqB8J139bRMuj+NbLO+7Ki2Wucg96XPPf7co4qsLM8FMUN5GG3DReIKqR4+K8BQadpp8hJXtNqfRSG8miqMMe7hONwLXcVGHALCUHEy19JhWLeHYdpMMoVTnFG9qG4X39GDdCpPphCRCRT0HqJyljpIj1PSXPHc2W1Zy6mQa9C6bJ2zN9CGBmG6Pf5/glbtx7ahmUQcnFMgnysnupffa01akDjOvDs742lyxfKdAHasvY27TtOwh6yjUa5HrSuYXo5XZ3oYslpUAAeWEOpykNhgmRnUU5tkLMH8/R3CGMA8hyTPnbLXFElmycSiu8pChXFY8B7EbjqnbGGir3ebsNyUtByEUwKgbMRz6EYJZoMVCVRcY5pd93Kyqe4nYJSohrrabhwVoa1GoEJHtKeypC9e0UIgAYtkHEg6Rlc=
+    secure: LLvf5IUMCjp8fdL8gB2R+KleG/Dq+tFisLOqGbfUK1jr36w5BA4sknlJOPguVH2bvcQbtXzBF+bzvHWkmV+WZNKk/A0KjQx1LUWW1I9w0qMyJ/Jw0MjvNfDy05LwjfzoEV+j/3AwasQ7FDOGdQZMPxN8qLcrqQ0sVwNMqBUXZw7rwAzcr/gfTG9sgROzKiuYuC57resLXYAyJ0Ugl/8l2REOFObnDVgNpr6W5BKdOpDCPRpmkT5JsLQlO2+boHNU7JM5x3x7A2YSkZNAvETrWWCpurlElMUuTpBUllkP0AqMYgqkL9K8elDwfXnz0aOooC6s+rV3vKiRMWm3CE3yISgKu8Lloklt+ocgcJ70C9lBrmNtJxtiyArxT8iME8xuaDDxLJ+Tb+oEPk8RuOWKJ30s2wr/0slnV9Or7X6HbPhyzHLYE0o9QtKZBf3etY3swuTOoMK6iF5nXsnWM5x5/G44o1QA6tkDJTeXc2Yswv4Cqa/5sYyVBN475zk2fZlgMdUzFtG+C0A59jDeI7XBscornxvvTP5v1mVc7pZWiIRgsTqphwRvdZUrUWdnsy0NgLJ5a0hLLkS4tpB9HjD93ThlPWJoXi3rMmmEgH1jNwpTCXc+SbBK80hWkEuqkQAdwW3pPTJzYgs/+VlQ2A/i3cG1slOmJbOHulFCb92ZgNM=
