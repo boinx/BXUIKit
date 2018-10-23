@@ -72,11 +72,6 @@ extension NSLayoutConstraint
 		return self
 	}
 
-	@discardableResult public static func => (lhs: NSLayoutConstraint, rhs: inout [NSLayoutConstraint]) -> NSLayoutConstraint
-	{
-		rhs.append(lhs)
-		return lhs
-	}
 
 	/// This convenience method assigns a NSLayoutConstraint to a property and returns it again, so method chaining is possible.
 	///
@@ -89,12 +84,6 @@ extension NSLayoutConstraint
 	{
 		property = self
 		return self
-	}
-
-	@discardableResult public static func => (lhs: NSLayoutConstraint, rhs: inout NSLayoutConstraint?) -> NSLayoutConstraint
-	{
-		rhs = lhs
-		return lhs
 	}
 
 

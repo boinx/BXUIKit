@@ -13,9 +13,40 @@ import UIKit
 //----------------------------------------------------------------------------------------------------------------------
 
 
-infix operator •==• : ComparisonPrecedence
-infix operator •>=• : ComparisonPrecedence
-infix operator •<=• : ComparisonPrecedence
+infix operator •==• : BitwiseShiftPrecedence
+infix operator •>=• : BitwiseShiftPrecedence
+infix operator •<=• : BitwiseShiftPrecedence
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+extension NSLayoutConstraint
+{
+	@discardableResult public static func + (lhs: NSLayoutConstraint, rhs: CGFloat) -> NSLayoutConstraint
+	{
+		lhs.constant = rhs
+		return lhs
+	}
+
+	@discardableResult public static func - (lhs: NSLayoutConstraint, rhs: CGFloat) -> NSLayoutConstraint
+	{
+		lhs.constant = -rhs
+		return lhs
+	}
+
+	@discardableResult public static func => (lhs: NSLayoutConstraint, rhs: inout NSLayoutConstraint?) -> NSLayoutConstraint
+	{
+		rhs = lhs
+		return lhs
+	}
+
+	@discardableResult public static func => (lhs: NSLayoutConstraint, rhs: inout [NSLayoutConstraint]) -> NSLayoutConstraint
+	{
+		rhs.append(lhs)
+		return lhs
+	}
+}
 
 
 //----------------------------------------------------------------------------------------------------------------------
