@@ -43,8 +43,10 @@
 		D06CC90521772FDF009C2991 /* NSUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC8F521772FDF009C2991 /* NSUIFont.swift */; };
 		D06CC90721773A1D009C2991 /* NSUIFont+Creating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC90621773A1D009C2991 /* NSUIFont+Creating.swift */; };
 		D06CC90821773A1D009C2991 /* NSUIFont+Creating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC90621773A1D009C2991 /* NSUIFont+Creating.swift */; };
-		D06CC956217EFF53009C2991 /* NSLayoutConstraint+Manage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC955217EFF53009C2991 /* NSLayoutConstraint+Manage.swift */; };
-		D06CC957217EFF53009C2991 /* NSLayoutConstraint+Manage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC955217EFF53009C2991 /* NSLayoutConstraint+Manage.swift */; };
+		D06CC956217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */; };
+		D06CC957217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */; };
+		D06CC95A217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC959217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift */; };
+		D06CC95B217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC959217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +101,8 @@
 		D06CC8F421772FDF009C2991 /* NSUIFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIFunctions.swift; sourceTree = "<group>"; };
 		D06CC8F521772FDF009C2991 /* NSUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIFont.swift; sourceTree = "<group>"; };
 		D06CC90621773A1D009C2991 /* NSUIFont+Creating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIFont+Creating.swift"; sourceTree = "<group>"; };
-		D06CC955217EFF53009C2991 /* NSLayoutConstraint+Manage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Manage.swift"; sourceTree = "<group>"; };
+		D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Chaining.swift"; sourceTree = "<group>"; };
+		D06CC959217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Operators.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +264,8 @@
 		D06CC958217F003E009C2991 /* Auto Layout */ = {
 			isa = PBXGroup;
 			children = (
-				D06CC955217EFF53009C2991 /* NSLayoutConstraint+Manage.swift */,
+				D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */,
+				D06CC959217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift */,
 			);
 			path = "Auto Layout";
 			sourceTree = "<group>";
@@ -453,7 +457,8 @@
 				481A25882175A04100FB8E9A /* NSUIView+Hierarchy.swift in Sources */,
 				D06CC90221772FDF009C2991 /* NSUIFunctions.swift in Sources */,
 				D06CC8FA21772FDF009C2991 /* NSUIBezierPath.swift in Sources */,
-				D06CC956217EFF53009C2991 /* NSLayoutConstraint+Manage.swift in Sources */,
+				D06CC956217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */,
+				D06CC95B217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift in Sources */,
 				481A258521759FF400FB8E9A /* NSUIView+Drawing.swift in Sources */,
 				481A25B72175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift in Sources */,
 				481A258221759F6D00FB8E9A /* NSUIView.swift in Sources */,
@@ -473,11 +478,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D06CC95A217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift in Sources */,
 				48472C3D21746BF100549686 /* AVAudioPlayer+Play.swift in Sources */,
 				D06CC90321772FDF009C2991 /* NSUIFunctions.swift in Sources */,
 				D06CC90721773A1D009C2991 /* NSUIFont+Creating.swift in Sources */,
 				D06CC8FB21772FDF009C2991 /* NSUIBezierPath.swift in Sources */,
-				D06CC957217EFF53009C2991 /* NSLayoutConstraint+Manage.swift in Sources */,
+				D06CC957217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */,
 				481A258321759F6D00FB8E9A /* NSUIView.swift in Sources */,
 				D06CC8F921772FDF009C2991 /* NSUIWindow.swift in Sources */,
 				D06CC90121772FDF009C2991 /* NSUIColor.swift in Sources */,
