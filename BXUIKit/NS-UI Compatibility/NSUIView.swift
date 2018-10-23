@@ -28,18 +28,3 @@ public typealias NSUIView = UIView
 
 
 //----------------------------------------------------------------------------------------------------------------------
-
-// FIXME: Should this be its own file?
-public extension NSLayoutConstraint
-{
-	/// Removes a NSLayoutConstraint from the specified view
-	
-	public func remove(from view:NSUIView?)
-	{
-		self.isActive = false
-		view?.removeConstraint(self)
-	}
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
