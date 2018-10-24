@@ -25,6 +25,8 @@
 		48472C3A21746BDF00549686 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3921746BDE00549686 /* NSArrayController+UIKit.swift */; };
 		48472C3D21746BF100549686 /* AVAudioPlayer+Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3C21746BF100549686 /* AVAudioPlayer+Play.swift */; };
 		48472C4321746E1700549686 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48472C4221746E1700549686 /* BXSwiftUtils.framework */; };
+		D027AA2921805E6300249F03 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */; };
+		D027AA2A21805E6300249F03 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */; };
 		D06CC8F621772FDF009C2991 /* NSUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC8EE21772FDE009C2991 /* NSUIImage.swift */; };
 		D06CC8F721772FDF009C2991 /* NSUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC8EE21772FDE009C2991 /* NSUIImage.swift */; };
 		D06CC8F821772FDF009C2991 /* NSUIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC8EF21772FDE009C2991 /* NSUIWindow.swift */; };
@@ -45,8 +47,6 @@
 		D06CC90821773A1D009C2991 /* NSUIFont+Creating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC90621773A1D009C2991 /* NSUIFont+Creating.swift */; };
 		D06CC956217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */; };
 		D06CC957217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */; };
-		D06CC95A217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC959217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift */; };
-		D06CC95B217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC959217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +92,7 @@
 		48472C3C21746BF100549686 /* AVAudioPlayer+Play.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Play.swift"; sourceTree = "<group>"; };
 		48472C4021746E0F00549686 /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472C4221746E1700549686 /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Operators.swift"; sourceTree = "<group>"; };
 		D06CC8EE21772FDE009C2991 /* NSUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIImage.swift; sourceTree = "<group>"; };
 		D06CC8EF21772FDE009C2991 /* NSUIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIWindow.swift; sourceTree = "<group>"; };
 		D06CC8F021772FDE009C2991 /* NSUIBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIBezierPath.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		D06CC8F521772FDF009C2991 /* NSUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIFont.swift; sourceTree = "<group>"; };
 		D06CC90621773A1D009C2991 /* NSUIFont+Creating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIFont+Creating.swift"; sourceTree = "<group>"; };
 		D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Chaining.swift"; sourceTree = "<group>"; };
-		D06CC959217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Operators.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,7 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */,
-				D06CC959217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift */,
+				D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */,
 			);
 			path = "Auto Layout";
 			sourceTree = "<group>";
@@ -456,9 +456,9 @@
 				D06CC90021772FDF009C2991 /* NSUIColor.swift in Sources */,
 				481A25882175A04100FB8E9A /* NSUIView+Hierarchy.swift in Sources */,
 				D06CC90221772FDF009C2991 /* NSUIFunctions.swift in Sources */,
+				D027AA2921805E6300249F03 /* NSLayoutConstraint+Operators.swift in Sources */,
 				D06CC8FA21772FDF009C2991 /* NSUIBezierPath.swift in Sources */,
 				D06CC956217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */,
-				D06CC95B217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift in Sources */,
 				481A258521759FF400FB8E9A /* NSUIView+Drawing.swift in Sources */,
 				481A25B72175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift in Sources */,
 				481A258221759F6D00FB8E9A /* NSUIView.swift in Sources */,
@@ -478,7 +478,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D06CC95A217F1FB8009C2991 /* NSLayoutConstraint+Operators.swift in Sources */,
 				48472C3D21746BF100549686 /* AVAudioPlayer+Play.swift in Sources */,
 				D06CC90321772FDF009C2991 /* NSUIFunctions.swift in Sources */,
 				D06CC90721773A1D009C2991 /* NSUIFont+Creating.swift in Sources */,
@@ -491,6 +490,7 @@
 				D06CC90521772FDF009C2991 /* NSUIFont.swift in Sources */,
 				D06CC8FD21772FDF009C2991 /* NSUILabel.swift in Sources */,
 				D06CC8FF21772FDF009C2991 /* NSUITextView.swift in Sources */,
+				D027AA2A21805E6300249F03 /* NSLayoutConstraint+Operators.swift in Sources */,
 				481A25BA2175AD2900FB8E9A /* NSUIVIew+RoundedCorners.swift in Sources */,
 				481A25892175A04100FB8E9A /* NSUIView+Hierarchy.swift in Sources */,
 				481A258621759FF400FB8E9A /* NSUIView+Drawing.swift in Sources */,
