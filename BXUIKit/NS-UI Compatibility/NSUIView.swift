@@ -28,3 +28,17 @@ public typealias NSUIView = UIView
 
 
 //----------------------------------------------------------------------------------------------------------------------
+
+
+extension NSUIView
+{
+	// Provide a closure based API on UIView that lets yout configure properties of a single view
+
+    public func configure(using closure: (NSUIView)->Void)
+    {
+        closure(self)
+    }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
