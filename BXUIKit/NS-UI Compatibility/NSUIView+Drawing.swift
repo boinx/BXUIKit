@@ -64,4 +64,18 @@ public extension NSUIView
         block()
         context.restoreGState()
     }
+	
+	
+    #if os(macOS)
+
+	/// Provides the same convenience API as on iOS
+	
+	public var alpha:CGFloat
+	{
+		set { self.layer?.opacity = Float(newValue) }
+		get { return CGFloat(self.layer?.opacity ?? 0.0)  }
+	}
+
+	#endif
+
 }
