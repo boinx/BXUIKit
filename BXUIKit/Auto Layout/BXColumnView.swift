@@ -86,8 +86,8 @@ public class BXColumnView : NSUIView
 		
 		self.columnView1.defineLayout
 		{
-			$0.top == self.top + self.paddingTop //columnFrame1.minY
-			$0.left == self.left + self.paddingLeft //columnFrame1.minX
+			$0.top == self.top + self.paddingTop
+			$0.left == self.left + self.paddingLeft
 			$0.width == columnFrame1.width
 			$0.height == columnFrame1.height
 		}
