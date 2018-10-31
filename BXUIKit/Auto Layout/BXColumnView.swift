@@ -104,7 +104,7 @@ public class BXColumnView : NSUIView
 			$0.height == frame0.height
 		}
 		
-		// If this container view is wide enough, then put column 2 next to column 1
+		// If this container view is wide enough, then put columns next to each other
 		
 		if self.bounds.width >= twoColumnWidth
 		{
@@ -136,7 +136,7 @@ public class BXColumnView : NSUIView
 			size.height = self.paddingTop + frame0.height + self.spacingY + frame1.height + self.paddingBottom
 		}
 
-		// Set size so that an enclosingScrollView works correctly
+		// Set contentSize so that an enclosingScrollView works correctly
 		
 		self.enclosingScrollView?.contentSize = size
 
