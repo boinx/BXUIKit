@@ -36,7 +36,7 @@ public class BXColumnView : NSUIView
 	public var paddingRight:CGFloat = 20.0
 	public var paddingBottom:CGFloat = 20.0
 	
-	public var columnSpacing = CGSize(width:20.0,height:20.0)
+	public var spacing = CGSize(width:20.0,height:20.0)
 	
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -73,6 +73,9 @@ public class BXColumnView : NSUIView
 
 	public override func updateConstraints()
 	{
+		let twoColumnWidth = self.paddingLeft + columnFrame1.width + self.spacing.width + columnFrame2.width + self.paddingRight
+		var size = CGSize.zero
+		
 		// Remove all existing constraints
 		
 		self.removeAllConstraints()
@@ -91,15 +94,18 @@ public class BXColumnView : NSUIView
 		
 		// If this container view is wide enough, then column 2 beside column 1
 		
-		if self.bounds.width >= self.paddingLeft + columnFrame1.width + self.columnSpacing.width + columnFrame2.width + self.paddingRight
+		if self.bounds.width >= twoColumnWidth
 		{
 			self.columnView2.defineLayout
 			{
 				$0.top == self.columnView1.top
-				$0.left == self.columnView1.right + self.columnSpacing.width
+				$0.left == self.columnView1.right + self.spacing.width
 				$0.width == columnFrame2.width
 				$0.height == columnFrame2.height
 			}
+
+			size.width = twoColumnWidth
+			size.height = self.paddingTop + max(columnFrame1.height,columnFrame2.height) + self.paddingBottom
 		}
 
 		// Otherwise column 2 will reflow below column 1
@@ -108,12 +114,21 @@ public class BXColumnView : NSUIView
 		{
 			self.columnView2.defineLayout
 			{
-				$0.top == self.columnView1.bottom + self.columnSpacing.height
+				$0.top == self.columnView1.bottom + self.spacing.height
 				$0.left == self.columnView1.left
 				$0.width == columnFrame2.width
 				$0.height == columnFrame2.height
 			}
+
+			size.width = self.paddingLeft + max(columnFrame1.width,columnFrame2.width) + self.paddingRight
+			size.height = self.paddingTop + columnFrame1.height + self.spacing.height + columnFrame2.height + self.paddingBottom
 		}
+
+		// Set size so that an enclosingScrollView works correctly
+		
+		self.enclosingScrollView?.contentSize = size
+
+		// Make UIKit/AppKit happy
 		
 		super.updateConstraints()
 	}
