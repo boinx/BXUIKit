@@ -21,7 +21,8 @@ public extension NSUIView
 {
     #if os(iOS)
 
-    // Provides the macOS style needsDisplay property to UIView. That way the same code can be used on both platforms.
+    // Provides the macOS style needsDisplay/needsLayout/needsUpdateConstraints property to UIView.
+    // That way the same code can be used on both platforms.
     
     public var needsDisplay:Bool
     {
@@ -45,7 +46,8 @@ public extension NSUIView
 
     #if os(macOS)
 
-    // Provides the iOS style setNeedsDisplay() method to UIView. That way the same code can be used on both platforms.
+    // Provides the iOS style setNeedsDisplay()/setNeedsLayout()/setNeedsUpdateConstraints() method to NSView.
+    // That way the same code can be used on both platforms.
     
     public func setNeedsDisplay()
     {
