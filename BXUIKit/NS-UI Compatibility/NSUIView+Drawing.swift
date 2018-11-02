@@ -29,6 +29,18 @@ public extension NSUIView
         get { return false }
     }
 
+    public var needsLayout:Bool
+    {
+        set { if newValue { self.setNeedsLayout() } }
+        get { return false }
+    }
+
+    public var needsUpdateConstraints:Bool
+    {
+        set { if newValue { self.setNeedsUpdateConstraints() } }
+        get { return false }
+    }
+
     #endif
 
     #if os(macOS)
@@ -38,6 +50,16 @@ public extension NSUIView
     public func setNeedsDisplay()
     {
         self.needsDisplay = true
+    }
+
+    public func setNeedsLayout()
+    {
+        self.needsLayout = true
+    }
+
+    public func setNeedsUpdateConstraints()
+    {
+        self.needsUpdateConstraints = true
     }
 
     #endif
