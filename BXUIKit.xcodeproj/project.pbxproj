@@ -56,7 +56,7 @@
 		48472BF72174579200549686 /* BXUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BXUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472BFA2174579200549686 /* BXUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXUIKit.h; sourceTree = "<group>"; };
 		48472BFB2174579200549686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48472C002174579300549686 /* BXUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BXUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48472C002174579300549686 /* BXUIKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BXUIKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48472C072174579300549686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48472C112174583300549686 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		48472C122174585A00549686 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				48472BF72174579200549686 /* BXUIKit.framework */,
-				48472C002174579300549686 /* BXUIKitTests.xctest */,
+				48472C002174579300549686 /* BXUIKit-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,9 +268,9 @@
 			productReference = 48472BF72174579200549686 /* BXUIKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		48472BFF2174579300549686 /* BXUIKitTests */ = {
+		48472BFF2174579300549686 /* BXUIKit-Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 48472C0E2174579300549686 /* Build configuration list for PBXNativeTarget "BXUIKitTests" */;
+			buildConfigurationList = 48472C0E2174579300549686 /* Build configuration list for PBXNativeTarget "BXUIKit-Tests" */;
 			buildPhases = (
 				48472BFC2174579300549686 /* Sources */,
 				48472BFD2174579300549686 /* Frameworks */,
@@ -281,9 +281,9 @@
 			dependencies = (
 				48472C032174579300549686 /* PBXTargetDependency */,
 			);
-			name = BXUIKitTests;
+			name = "BXUIKit-Tests";
 			productName = BXUIKitTests;
-			productReference = 48472C002174579300549686 /* BXUIKitTests.xctest */;
+			productReference = 48472C002174579300549686 /* BXUIKit-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -318,7 +318,7 @@
 			projectRoot = "";
 			targets = (
 				48472BF62174579200549686 /* BXUIKit */,
-				48472BFF2174579300549686 /* BXUIKitTests */,
+				48472BFF2174579300549686 /* BXUIKit-Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -587,9 +587,8 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.BXUIKitTests-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -605,9 +604,8 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.BXUIKitTests-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boinx.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -632,7 +630,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		48472C0E2174579300549686 /* Build configuration list for PBXNativeTarget "BXUIKitTests" */ = {
+		48472C0E2174579300549686 /* Build configuration list for PBXNativeTarget "BXUIKit-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				48472C0F2174579300549686 /* Debug */,

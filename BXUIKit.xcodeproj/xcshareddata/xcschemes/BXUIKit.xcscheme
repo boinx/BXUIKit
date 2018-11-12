@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "48472BFF2174579300549686"
-               BuildableName = "BXUIKitTests.xctest"
-               BlueprintName = "BXUIKitTests"
+               BuildableName = "BXUIKit-Tests.xctest"
+               BlueprintName = "BXUIKit-Tests"
                ReferencedContainer = "container:BXUIKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
