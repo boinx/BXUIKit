@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "48472C1921745BEF00549686"
+               BlueprintIdentifier = "48472BF62174579200549686"
                BuildableName = "BXUIKit.framework"
-               BlueprintName = "BXUIKit-iOS"
+               BlueprintName = "BXUIKit"
                ReferencedContainer = "container:BXUIKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "48472C2121745BEF00549686"
-               BuildableName = "BXUIKitTests-iOS.xctest"
-               BlueprintName = "BXUIKitTests-iOS"
+               BlueprintIdentifier = "48472BFF2174579300549686"
+               BuildableName = "BXUIKitTests.xctest"
+               BlueprintName = "BXUIKitTests"
                ReferencedContainer = "container:BXUIKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "48472C1921745BEF00549686"
+            BlueprintIdentifier = "48472BF62174579200549686"
             BuildableName = "BXUIKit.framework"
-            BlueprintName = "BXUIKit-iOS"
+            BlueprintName = "BXUIKit"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "48472C1921745BEF00549686"
+            BlueprintIdentifier = "48472BF62174579200549686"
             BuildableName = "BXUIKit.framework"
-            BlueprintName = "BXUIKit-iOS"
+            BlueprintName = "BXUIKit"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "48472C1921745BEF00549686"
+            BlueprintIdentifier = "48472BF62174579200549686"
             BuildableName = "BXUIKit.framework"
-            BlueprintName = "BXUIKit-iOS"
+            BlueprintName = "BXUIKit"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
