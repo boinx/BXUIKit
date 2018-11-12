@@ -6,6 +6,8 @@
 //  Copyright © 2018 Boinx Software Ltd. All rights reserved.
 //
 
+#if os(macOS)
+
 import Cocoa
 
 // FIXME: This import is only for testing the "weak-linked" BXSwiftUtils for macOS builds. It is not actually needed in this file.
@@ -42,3 +44,5 @@ public class BXMenuItem<T>: NSMenuItem
 		self.handler(self.representedObject as! T)
 	}
 }
+
+#endif

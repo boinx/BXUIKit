@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "48472BF62174579200549686"
                BuildableName = "BXUIKit.framework"
-               BlueprintName = "BXUIKit-macOS"
+               BlueprintName = "BXUIKit"
                ReferencedContainer = "container:BXUIKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "48472BFF2174579300549686"
-               BuildableName = "BXUIKitTests-macOS.xctest"
-               BlueprintName = "BXUIKitTests-macOS"
+               BuildableName = "BXUIKitTests.xctest"
+               BlueprintName = "BXUIKitTests"
                ReferencedContainer = "container:BXUIKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48472BF62174579200549686"
             BuildableName = "BXUIKit.framework"
-            BlueprintName = "BXUIKit-macOS"
+            BlueprintName = "BXUIKit"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48472BF62174579200549686"
             BuildableName = "BXUIKit.framework"
-            BlueprintName = "BXUIKit-macOS"
+            BlueprintName = "BXUIKit"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +84,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "48472BF62174579200549686"
             BuildableName = "BXUIKit.framework"
-            BlueprintName = "BXUIKit-macOS"
+            BlueprintName = "BXUIKit"
             ReferencedContainer = "container:BXUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

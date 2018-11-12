@@ -6,6 +6,8 @@
 //  Copyright © 2018 Boinx Software Ltd. & Imagine GbR. All rights reserved.
 //
 
+#if os(macOS)
+
 import AppKit
 
 extension NSMenuItem
@@ -36,3 +38,5 @@ extension NSMenuItem
         self.init(title: value.rawValue, value: value)
     }
 }
+
+#endif
