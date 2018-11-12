@@ -12,9 +12,9 @@ env:
 matrix:
   include:
   - osx_image: xcode10
-    env: SCHEME="BXUIKit-macOS" DESTINATION="platform=macOS,arch=x86_64"
+    env: SCHEME="BXUIKit" DESTINATION="platform=macOS,arch=x86_64"
   - osx_image: xcode10
-    env: SCHEME="BXUIKit-iOS" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=latest"
+    env: SCHEME="BXUIKit" DESTINATION="platform=iOS Simulator,name=iPhone X,OS=latest"
 script: set -o pipefail; xcodebuild -scheme "$SCHEME" -destination "$DESTINATION" clean build | xcpretty
 notifications:
   slack:
