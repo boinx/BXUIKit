@@ -18,6 +18,7 @@
 		48472C3521746B8500549686 /* NSMenu+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3421746B8500549686 /* NSMenu+Concatenation.swift */; };
 		48472C3721746B8D00549686 /* NSMenuItem+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3621746B8D00549686 /* NSMenuItem+ConvenienceInit.swift */; };
 		D000BA61218998BF002249ED /* NSUIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000BA60218998BE002249ED /* NSUIView+Constraints.swift */; };
+		D0046E3321A6E02D005F315E /* NSUIView+Bugfixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0046E3221A6E02C005F315E /* NSUIView+Bugfixes.swift */; };
 		D027AA2921805E6300249F03 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */; };
 		D05425102199844500BE2A42 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D054250F2199844500BE2A42 /* BXSwiftUtils.framework */; };
 		D05425152199888700BE2A42 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3921746BDE00549686 /* NSArrayController+UIKit.swift */; };
@@ -68,6 +69,7 @@
 		48472C3921746BDE00549686 /* NSArrayController+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSArrayController+UIKit.swift"; sourceTree = "<group>"; };
 		48472C3C21746BF100549686 /* AVAudioPlayer+Play.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Play.swift"; sourceTree = "<group>"; };
 		D000BA60218998BE002249ED /* NSUIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Constraints.swift"; sourceTree = "<group>"; };
+		D0046E3221A6E02C005F315E /* NSUIView+Bugfixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Bugfixes.swift"; sourceTree = "<group>"; };
 		D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Operators.swift"; sourceTree = "<group>"; };
 		D054250C2199825E00BE2A42 /* BXUIKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BXUIKit.xcconfig; sourceTree = "<group>"; };
 		D054250F2199844500BE2A42 /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 				481A258421759FF400FB8E9A /* NSUIView+Drawing.swift */,
 				481A25872175A04100FB8E9A /* NSUIView+Hierarchy.swift */,
 				481A25B82175AD2600FB8E9A /* NSUIVIew+RoundedCorners.swift */,
+				D0046E3221A6E02C005F315E /* NSUIView+Bugfixes.swift */,
 				D0C3A1662187092700E67851 /* NSUILayoutGuide.swift */,
 				D06CC8F021772FDE009C2991 /* NSUIBezierPath.swift */,
 				D06CC8F321772FDF009C2991 /* NSUIColor.swift */,
@@ -352,6 +355,7 @@
 				481A25B92175AD2600FB8E9A /* NSUIVIew+RoundedCorners.swift in Sources */,
 				D06CC8FC21772FDF009C2991 /* NSUILabel.swift in Sources */,
 				D06CC8FE21772FDF009C2991 /* NSUITextView.swift in Sources */,
+				D0046E3321A6E02D005F315E /* NSUIView+Bugfixes.swift in Sources */,
 				D000BA61218998BF002249ED /* NSUIView+Constraints.swift in Sources */,
 				48472C3321746B7800549686 /* BXMenuItem.swift in Sources */,
 				D06CC90021772FDF009C2991 /* NSUIColor.swift in Sources */,
