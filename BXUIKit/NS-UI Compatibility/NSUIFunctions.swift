@@ -52,6 +52,11 @@ public func NSUIRectFrameWithWidth(_ rect:CGRect,_ width:CGFloat)
 	path.stroke()
 }
 
+public func NSUIRectClip(_ rect: CGRect)
+{
+	UIRectClip(rect)
+}
+
 //public func NSUIFrameRectWithWidthUsingOperation(_ rect:CGRect,_ frameWidth:CGFloat,_ op:NSCompositingOperation)
 //{
 //	#warning("TODO: implement")
@@ -82,6 +87,11 @@ public func NSUIRectFrameWithWidth(_ rect:CGRect,_ frameWidth:CGFloat)
 public func NSUIRectFrameWithWidthUsingOperation(_ rect:CGRect,_ frameWidth:CGFloat,_ op:NSCompositingOperation)
 {
     __NSFrameRectWithWidthUsingOperation(rect, frameWidth, op)
+}
+
+public func NSUIRectClip(_ rect: CGRect)
+{
+	__NSRectClip(rect)
 }
     
 #endif
