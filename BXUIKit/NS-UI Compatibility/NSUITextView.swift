@@ -151,7 +151,7 @@ extension NSUITextView
 	// iOS and macOS. Unfortunately Apple messed up and didn't do it right, so we'll have to fix it here so we
 	// can write platform independent code.
 	
-	#if os(macOS)
+	#if os(macOS) && !swift(>=4.2)
 	
 	public func setTypingAttribute(_ value:Any,forKey key:NSAttributedStringKey)
 	{

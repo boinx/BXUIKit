@@ -163,12 +163,21 @@ public extension NSBezierPath
 	{
 		set
 		{
+			#if swift(>=4.2)
+			self.windingRule = newValue ? .evenOdd : .nonZero
+			#else
 			self.windingRule = newValue ? .evenOddWindingRule : .nonZeroWindingRule
+			#endif
  		}
 		
 		get
 		{
+			#if swift(>=4.2)
+			return self.windingRule == .evenOdd
+			#else
 			return self.windingRule == .evenOddWindingRule
+			#endif
+			
 		}
 	}
 }

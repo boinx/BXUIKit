@@ -138,7 +138,11 @@ public class BXColumnView : NSUIView
 
 		// Set contentSize so that an enclosingScrollView works correctly
 		
+		#if os(iOS)
 		self.enclosingScrollView?.contentSize = size
+		#else
+		self.enclosingScrollView?.documentView?.frame = CGRect(origin: .zero, size: size)
+		#endif
 
 		// Make UIKit/AppKit happy
 		

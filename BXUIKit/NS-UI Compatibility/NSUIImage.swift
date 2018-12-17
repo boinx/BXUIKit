@@ -52,7 +52,7 @@ public extension Bundle
 	
 	public func image(named name:String) -> NSUIImage?
 	{
-        return self.image(forResource:NSImage.Name(rawValue:name))
+        return self.image(forResource:NSImage.Name(name))
 	}
 }
 
