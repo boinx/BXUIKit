@@ -36,13 +36,13 @@ extension NSLayoutConstraint
 			multiplier: multiplier,
 			constant: self.constant)
 		
-			newConstraint.priority = self.priority
-    		newConstraint.identifier = self.identifier
-			newConstraint.shouldBeArchived = self.shouldBeArchived
-		
-			NSLayoutConstraint.deactivate([self])
-			NSLayoutConstraint.activate([newConstraint])
-			return newConstraint
+		newConstraint.priority = self.priority
+		newConstraint.identifier = self.identifier
+		newConstraint.shouldBeArchived = self.shouldBeArchived
+	
+		NSLayoutConstraint.deactivate([self])
+		NSLayoutConstraint.activate([newConstraint])
+		return newConstraint
 	}
 
 }
