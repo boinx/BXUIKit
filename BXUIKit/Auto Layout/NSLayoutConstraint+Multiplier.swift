@@ -25,7 +25,7 @@ extension NSLayoutConstraint
 	/// - parameter multiplier: The value for the multiplier
 	/// - returns: The new constraint
 	
-	@discardableResult public func setMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint
+	@discardableResult public func replaceWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint
 	{
 		let newConstraint = NSLayoutConstraint(
 			item: self.firstItem as Any,
