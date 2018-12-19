@@ -23,6 +23,7 @@
 		D05425102199844500BE2A42 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D054250F2199844500BE2A42 /* BXSwiftUtils.framework */; };
 		D05425152199888700BE2A42 /* NSArrayController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3921746BDE00549686 /* NSArrayController+UIKit.swift */; };
 		D05D0C0621C655D300FAF3CC /* NSUIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0521C655D300FAF3CC /* NSUIDocument.swift */; };
+		D05D0C0C21CA24DD00FAF3CC /* NSLayoutConstraint+Multiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0B21CA24DD00FAF3CC /* NSLayoutConstraint+Multiplier.swift */; };
 		D06CC8F621772FDF009C2991 /* NSUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC8EE21772FDE009C2991 /* NSUIImage.swift */; };
 		D06CC8F821772FDF009C2991 /* NSUIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC8EF21772FDE009C2991 /* NSUIWindow.swift */; };
 		D06CC8FA21772FDF009C2991 /* NSUIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC8F021772FDE009C2991 /* NSUIBezierPath.swift */; };
@@ -75,6 +76,7 @@
 		D054250C2199825E00BE2A42 /* BXUIKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BXUIKit.xcconfig; sourceTree = "<group>"; };
 		D054250F2199844500BE2A42 /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05D0C0521C655D300FAF3CC /* NSUIDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUIDocument.swift; sourceTree = "<group>"; };
+		D05D0C0B21CA24DD00FAF3CC /* NSLayoutConstraint+Multiplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Multiplier.swift"; sourceTree = "<group>"; };
 		D06CC8EE21772FDE009C2991 /* NSUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIImage.swift; sourceTree = "<group>"; };
 		D06CC8EF21772FDE009C2991 /* NSUIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIWindow.swift; sourceTree = "<group>"; };
 		D06CC8F021772FDE009C2991 /* NSUIBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUIBezierPath.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			children = (
 				D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */,
 				D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */,
+				D05D0C0B21CA24DD00FAF3CC /* NSLayoutConstraint+Multiplier.swift */,
 				D000BA60218998BE002249ED /* NSUIView+Constraints.swift */,
 				D087886A2189A64A00FE19B5 /* BXColumnView.swift */,
 			);
@@ -361,6 +364,7 @@
 				D06CC8FE21772FDF009C2991 /* NSUITextView.swift in Sources */,
 				D0046E3321A6E02D005F315E /* NSUIView+Bugfixes.swift in Sources */,
 				D000BA61218998BF002249ED /* NSUIView+Constraints.swift in Sources */,
+				D05D0C0C21CA24DD00FAF3CC /* NSLayoutConstraint+Multiplier.swift in Sources */,
 				48472C3321746B7800549686 /* BXMenuItem.swift in Sources */,
 				D06CC90021772FDF009C2991 /* NSUIColor.swift in Sources */,
 				481A25882175A04100FB8E9A /* NSUIView+Hierarchy.swift in Sources */,
