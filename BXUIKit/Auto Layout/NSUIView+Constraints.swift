@@ -25,6 +25,16 @@ extension NSUIView
     {
 		self.removeConstraints(self.constraints)
     }
+	
+	// Convenience function that takes an optional and automatically unwraps it before removing the constraint
+	
+    public func removeConstraint(_ constraint:NSLayoutConstraint?)
+    {
+		if let constraint = constraint
+		{
+			self.removeConstraint(constraint)
+		}
+    }
 }
 
 
