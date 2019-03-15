@@ -40,7 +40,7 @@ extension NSUIDocument
 	/// On macOS a document may not have been saved by the user yet, but autosave already created a file on disk,
 	/// so fileURL still returns nil while autosavedContentsFileURL already returns a valid URL.
 	
-	public var baseURL : URL
+	public var baseURL : URL?
 	{
 		#if os(iOS)
 		return self.fileURL
