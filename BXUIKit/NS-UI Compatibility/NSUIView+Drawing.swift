@@ -24,19 +24,19 @@ public extension NSUIView
     // Provides the macOS style needsDisplay/needsLayout/needsUpdateConstraints property to UIView.
     // That way the same code can be used on both platforms.
     
-    public var needsDisplay:Bool
+    var needsDisplay:Bool
     {
         set { if newValue { self.setNeedsDisplay() } }
         get { return false }
     }
 
-    public var needsLayout:Bool
+    var needsLayout:Bool
     {
         set { if newValue { self.setNeedsLayout() } }
         get { return false }
     }
 
-    public var needsUpdateConstraints:Bool
+    var needsUpdateConstraints:Bool
     {
         set { if newValue { self.setNeedsUpdateConstraints() } }
         get { return false }
@@ -49,17 +49,17 @@ public extension NSUIView
     // Provides the iOS style setNeedsDisplay()/setNeedsLayout()/setNeedsUpdateConstraints() method to NSView.
     // That way the same code can be used on both platforms.
     
-    public func setNeedsDisplay()
+    func setNeedsDisplay()
     {
         self.needsDisplay = true
     }
 
-    public func setNeedsLayout()
+    func setNeedsLayout()
     {
         self.needsLayout = true
     }
 
-    public func setNeedsUpdateConstraints()
+    func setNeedsUpdateConstraints()
     {
         self.needsUpdateConstraints = true
     }
@@ -68,7 +68,7 @@ public extension NSUIView
 
     /// Returns the current CGContext for drawing
     
-    public var currentCGContext : CGContext?
+    var currentCGContext : CGContext?
     {
         #if os(iOS)
         return UIGraphicsGetCurrentContext()
@@ -80,7 +80,7 @@ public extension NSUIView
     
     /// Saves the current graphics state, then executes the drawing block and then restores the state again.
 
-    public func drawPreservingGraphicsState(_ block:()->Void)
+    func drawPreservingGraphicsState(_ block:()->Void)
     {
         guard let context = self.currentCGContext else { return }
 
@@ -94,7 +94,7 @@ public extension NSUIView
 
 	/// Provides the same convenience API as on iOS
 	
-	public var alpha:CGFloat
+	var alpha:CGFloat
 	{
 		set { self.layer?.opacity = Float(newValue) }
 		get { return CGFloat(self.layer?.opacity ?? 0.0)  }

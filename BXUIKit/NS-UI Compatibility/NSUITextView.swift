@@ -189,7 +189,7 @@ extension NSUITextView
 
 public extension NSTextContainer
 {
-    public var containerSize:CGSize
+    var containerSize:CGSize
 	{
 		set
 		{

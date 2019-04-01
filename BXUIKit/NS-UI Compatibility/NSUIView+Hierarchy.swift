@@ -21,7 +21,7 @@ public extension NSUIView
 {
     /// Returns a flattened list of all descendants of a view
     
-    public var recursiveSubviews : [NSUIView]
+    var recursiveSubviews : [NSUIView]
     {
         var subviews:[NSUIView] = self.flattenedViewHierarchy
         subviews.removeAll(where: { $0 === self })
@@ -30,7 +30,7 @@ public extension NSUIView
     
     /// Returns a flattened list of views starting at a specific point in the view hierarchy
     
-    public var flattenedViewHierarchy : [NSUIView]
+    var flattenedViewHierarchy : [NSUIView]
     {
         var views:[NSUIView] = []
         self.gatherViewsInViewHierarchy(with:&views)
@@ -52,7 +52,7 @@ public extension NSUIView
     
     #if os(iOS)
     
-    public var enclosingScrollView : UIScrollView?
+    var enclosingScrollView : UIScrollView?
     {
         if let scrollview = self as? UIScrollView
         {

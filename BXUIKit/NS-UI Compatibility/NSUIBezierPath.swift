@@ -41,7 +41,7 @@ public extension NSUIBezierPath
 
 	/// Creates a path from an array of CGPoints
 	
-	public convenience init(with points:[CGPoint])
+	convenience init(with points:[CGPoint])
 	{
 		self.init()
 
@@ -63,7 +63,7 @@ public extension NSUIBezierPath
 
 	/// Clips drawing to the inside of the path
 	
-	public func clipToInside()
+	func clipToInside()
 	{
 		self.addClip()
 	}
@@ -72,7 +72,7 @@ public extension NSUIBezierPath
 	/// Clips drawing to the outside of the path (with the specified rect as the maximum bounds of drawing).
 	/// The rect has thus to be sigificantly largers then the bounds of the path.
 	
-	public func clipToOutside(with frame:CGRect)
+	func clipToOutside(with frame:CGRect)
 	{
 		let clipPath = NSUIBezierPath(rect:frame)
 		clipPath.usesEvenOddFillRule = true
@@ -91,17 +91,17 @@ public extension NSUIBezierPath
 
 public extension UIBezierPath
 {
-	public func line(to point:CGPoint)
+	func line(to point:CGPoint)
 	{
 		self.addLine(to:point)
 	}
 
-	public func curve(to endPoint:CGPoint,controlPoint1:CGPoint,controlPoint2:CGPoint)
+	func curve(to endPoint:CGPoint,controlPoint1:CGPoint,controlPoint2:CGPoint)
 	{
 		self.addCurve(to:endPoint,controlPoint1:controlPoint1,controlPoint2:controlPoint2)
 	}
 	
-	public convenience init(roundedRect rect:CGRect,xRadius:CGFloat,yRadius:CGFloat)
+	convenience init(roundedRect rect:CGRect,xRadius:CGFloat,yRadius:CGFloat)
 	{
 //		self.init(roundedRect:rect,byRoundingCorners:.allCorners,cornerRadii:CGSize(width:xRadius,height:yRadius))
 		
@@ -127,12 +127,12 @@ public extension UIBezierPath
     	self.close()
 	}
 	
-	public func appendOval(in rect:CGRect)
+	func appendOval(in rect:CGRect)
 	{
 		self.append(UIBezierPath(ovalIn:rect))
 	}
 
-   	public var reversed:NSUIBezierPath
+   	var reversed:NSUIBezierPath
    	{
 		return self.reversing()
    	}
@@ -152,14 +152,14 @@ public extension NSBezierPath
 {
 	/// Add iOS like convenience init
 	
-    public convenience init(roundedRect rect:CGRect,cornerRadius:CGFloat)
+    convenience init(roundedRect rect:CGRect,cornerRadius:CGFloat)
 	{
 		self.init(roundedRect:rect,xRadius:cornerRadius,yRadius:cornerRadius)
 	}
 	
 	/// iOS like convenience accessor on macOS for shared platform code
 	
-	public var usesEvenOddFillRule:Bool
+	var usesEvenOddFillRule:Bool
 	{
 		set
 		{

@@ -30,7 +30,7 @@ public extension NSUIView
 	///
 	///	This custom implementation tries up to 1000 times before giving up.
 	
-	public var isHidden_workaround : Bool
+	var isHidden_workaround : Bool
 	{
 		set
 		{

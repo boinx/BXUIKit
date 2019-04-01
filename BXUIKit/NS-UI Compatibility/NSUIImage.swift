@@ -38,7 +38,7 @@ public extension Bundle
 {
 	/// Returns a named image from the bundle
 	
-	public func image(named name:String) -> NSUIImage?
+	func image(named name:String) -> NSUIImage?
 	{
 		return UIImage(named:name,in:self,compatibleWith:nil)
 	}
@@ -50,7 +50,7 @@ public extension Bundle
 {
 	/// Returns a named image from the bundle
 	
-	public func image(named name:String) -> NSUIImage?
+	func image(named name:String) -> NSUIImage?
 	{
         return self.image(forResource:NSImage.Name(name))
 	}

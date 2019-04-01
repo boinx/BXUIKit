@@ -13,7 +13,7 @@ public extension NSUIView
 {
     #if os(macOS)
     
-    @objc public func roundCorners(_ corners: CACornerMask, radius: CGFloat)
+    @objc func roundCorners(_ corners: CACornerMask, radius: CGFloat)
     {
         self.wantsLayer = true
         
@@ -32,7 +32,7 @@ public extension NSUIView
     
     #elseif os(iOS)
     
-    @objc public func roundCorners(_ corners: CACornerMask, radius: CGFloat)
+    @objc func roundCorners(_ corners: CACornerMask, radius: CGFloat)
     {
         self.layer.cornerRadius = radius
         self.layer.maskedCorners = corners
