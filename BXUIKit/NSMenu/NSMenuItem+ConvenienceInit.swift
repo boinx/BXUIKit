@@ -18,13 +18,26 @@ extension NSMenuItem
      
      - parameter title: The item's displayable title.
      - parameter value: The value that is represented by this item.
+     - parameter indentationLevel: The item's indentationLevel, typically 0.
+     - parameter enabled: Wheter the item should be enabled (if the parent menu doesn't auto-enable items itself).
      */
-    public convenience init(title: String, value: Any, indentationLevel: Int = 0, enabled: Bool = true)
+    @objc public convenience init(title: String, value: Any?, indentationLevel: Int, enabled: Bool)
     {
         self.init(title: title, action: nil, keyEquivalent: "")
         self.representedObject = value
         self.indentationLevel = indentationLevel
         self.isEnabled = enabled
+    }
+    
+    /**
+     Convenience initializer setting the title and represented object.
+     
+     Same as `NSMenuItem(title:value:indentationLevel:enabled)`, but with `indentationLevel = 0` and `enabled = true`.
+     Listed as a seperate method for Objective C accessibility.
+     */
+    @objc public convenience init(title: String, value: Any?)
+    {
+        self.init(title: title, value: value, indentationLevel: 0, enabled: true)
     }
     
     /**
