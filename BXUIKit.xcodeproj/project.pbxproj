@@ -36,6 +36,7 @@
 		D06CC956217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */; };
 		D087886B2189A64A00FE19B5 /* BXColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087886A2189A64A00FE19B5 /* BXColumnView.swift */; };
 		D0C3A1682187092700E67851 /* NSUILayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3A1662187092700E67851 /* NSUILayoutGuide.swift */; };
+		D0EBC68C2289605500DC7E52 /* UIApplication+frontmostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EBC68B2289605500DC7E52 /* UIApplication+frontmostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Chaining.swift"; sourceTree = "<group>"; };
 		D087886A2189A64A00FE19B5 /* BXColumnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXColumnView.swift; sourceTree = "<group>"; };
 		D0C3A1662187092700E67851 /* NSUILayoutGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUILayoutGuide.swift; sourceTree = "<group>"; };
+		D0EBC68B2289605500DC7E52 /* UIApplication+frontmostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+frontmostViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		48472BF92174579200549686 /* BXUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				D0EBC68A2289605500DC7E52 /* UIViewController */,
 				48472C3B21746BE600549686 /* AVAudioPlayer */,
 				481A258021759F5700FB8E9A /* NS-UI Compatibility */,
 				D06CC958217F003E009C2991 /* Auto Layout */,
@@ -243,6 +246,14 @@
 				D087886A2189A64A00FE19B5 /* BXColumnView.swift */,
 			);
 			path = "Auto Layout";
+			sourceTree = "<group>";
+		};
+		D0EBC68A2289605500DC7E52 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0EBC68B2289605500DC7E52 /* UIApplication+frontmostViewController.swift */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +375,7 @@
 				D06CC8FE21772FDF009C2991 /* NSUITextView.swift in Sources */,
 				D0046E3321A6E02D005F315E /* NSUIView+Bugfixes.swift in Sources */,
 				D000BA61218998BF002249ED /* NSUIView+Constraints.swift in Sources */,
+				D0EBC68C2289605500DC7E52 /* UIApplication+frontmostViewController.swift in Sources */,
 				D05D0C0C21CA24DD00FAF3CC /* NSLayoutConstraint+Multiplier.swift in Sources */,
 				48472C3321746B7800549686 /* BXMenuItem.swift in Sources */,
 				D06CC90021772FDF009C2991 /* NSUIColor.swift in Sources */,
