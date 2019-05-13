@@ -19,9 +19,9 @@ public extension UIApplication
 {
 	/// Returns the frontmost UIViewController that is not a UIAlertController
 
-    static var frontmostViewController: UIViewController?
+    var frontmostViewController: UIViewController?
     {
-        return UIApplication.shared.keyWindow?.rootViewController?.frontmostViewController
+        return self.keyWindow?.rootViewController?.frontmostViewController
     }
 }
 
