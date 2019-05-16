@@ -21,7 +21,14 @@ public extension UIApplication
 
     var frontmostViewController: UIViewController?
     {
-        return self.keyWindow?.rootViewController?.frontmostViewController
+    	return self.frontmostViewController(excluding: [UIAlertController.self])
+    }
+
+	/// Returns the frontmost UIViewController that is not any of the specified classTypes
+
+    func frontmostViewController(excluding classTypes: [UIViewController.Type]) -> UIViewController?
+    {
+        return self.keyWindow?.rootViewController?.frontmostViewController(excluding: classTypes)
     }
 }
 
@@ -35,27 +42,37 @@ public extension UIViewController
 
     var frontmostViewController: UIViewController?
     {
+        return self.frontmostViewController(excluding: [UIAlertController.self])
+    }
+
+	/// Returns the frontmost UIViewController that is not any of the specified classTypes
+
+    func frontmostViewController(excluding classTypes: [UIViewController.Type]) -> UIViewController?
+    {
         if let navigationController = self as? UINavigationController
         {
-            return navigationController.topViewController?.frontmostViewController
+            return navigationController.topViewController?.frontmostViewController(excluding:classTypes)
         }
         else if let tabBarController = self as? UITabBarController
         {
-            return tabBarController.selectedViewController?.frontmostViewController
+            return tabBarController.selectedViewController?.frontmostViewController(excluding:classTypes)
         }
         else if let presentedViewController = presentedViewController
         {
-            return presentedViewController.frontmostViewController
+            return presentedViewController.frontmostViewController(excluding:classTypes)
         }
-        else if self is UIAlertController
-        {
-            return nil
-        }
-        else
-        {
-            return self
-        }
+
+		for classType in classTypes
+		{
+			if self.isKind(of:classType)
+			{
+				return nil
+			}
+		}
+		
+		return self
     }
+
 }
 
 
