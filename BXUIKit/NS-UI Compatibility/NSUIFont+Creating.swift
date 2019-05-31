@@ -75,10 +75,12 @@ extension NSUIFont
 	{
 		#if os(iOS)
 		
-		var desc = self.fontDescriptor
-		desc = desc.withFamily(family)
-		let size = self.pointSize
-		return UIFont(descriptor:desc,size:size)
+		let traits = self.fontDescriptor.symbolicTraits
+		
+		var desc = UIFontDescriptor()
+	 	desc = desc.withFamily(family)
+	 	if let d = desc.withSymbolicTraits(traits) { desc = d }
+		return UIFont(descriptor:desc, size:self.pointSize)
 		
 		#else
 		
@@ -94,15 +96,18 @@ extension NSUIFont
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	/// Creates a new font with the specified family name, while trying to keep the face and size intact
+	/// Creates a new font with the specified face name, while trying to keep the family and size intact
 	
 	public func withFace(_ face:String) -> NSUIFont
 	{
 		#if os(iOS)
 		
-		var desc = self.fontDescriptor
-		desc = desc.withFace(face)
+		let family = self.familyName
 		let size = self.pointSize
+		
+		var desc = UIFontDescriptor()
+		desc = desc.withFamily(family)
+		desc = desc.withFace(face)
 		return UIFont(descriptor:desc,size:size)
 		
 		#else
