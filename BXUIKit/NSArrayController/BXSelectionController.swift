@@ -106,7 +106,7 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 
 	/// Adds a new object to the selection
 	
-	open func addToSelectedObjects(_ object:Object)
+	open func addSelectedObject(_ object:Object)
 	{
 		let id = object.id
 		
@@ -121,9 +121,20 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	}
 
 
+	/// Adds objects to the selection
+	
+	open func addSelectedObjects(_ objects:[Object])
+	{
+		objects.forEach { self.addSelectedObject($0) }
+	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 	/// Removes an object from the selection
 	
-	open func removeFromSelectedObjects(_ object:Object)
+	open func removeSelectedObject(_ object:Object)
 	{
 		if let wrappedObject = selection[object.id]
 		{
@@ -131,24 +142,16 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 			selection[object.id] = nil
 			self.publish()
 		}
-		
 	}
 
-
-	/// Deselects all objects
+	/// Removes objects from the selection
 	
-	open func deselectAll()
+	open func removeSelectedObjects(_ objects:[Object])
 	{
-		for (_,wrappedObject) in self.selection
-		{
-			wrappedObject.removeObservers()
-		}
-		
-		self.selection = [:]
-		self.publish()
+		objects.forEach { self.removeSelectedObject($0) }
 	}
-	
-	
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -175,6 +178,42 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	open var selectedObjects: [Object]
 	{
 		return self.selection.values.compactMap { $0.object }
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// Deselects all objects
+	
+	open func deselectAll()
+	{
+		for (_,wrappedObject) in self.selection
+		{
+			wrappedObject.removeObservers()
+		}
+		
+		self.selection = [:]
+		self.publish()
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	/// This property returns true if we have any selected objects
+
+	open var hasSelection:Bool
+	{
+		return self.selection.count > 0
+	}
+	
+
+	/// Returns true if the specified object is currently selected
+	
+	open func isSelected(_ object:Object) -> Bool
+	{
+		return self.selection.values.contains { $0.object === object }
 	}
 	
 	
