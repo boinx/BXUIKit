@@ -16,15 +16,18 @@ import BXSwiftUtils
 
 /// This protocol provides a way to uniquely identify objects
 
-public protocol Identifiable
+public protocol Selectable : class
 {
-	/// The type of the identifier
-	
-	associatedtype ID: Hashable
-	
+	typealias ID = String
+
 	/// Returns the identifier for an object
 	
-	var id: Self.ID { get }
+	var id: ID { get }
+	
+	/// This func is called when an object is removed from its parent array, and should thus also be
+	/// removed from the selection
+	
+//	func didGetRemovedFromArray()
 }
 
 
@@ -33,21 +36,16 @@ public protocol Identifiable
 
 // MARK: -
 
-open class BXSelectionController<Object:NSObject> : NSObject where Object:Identifiable
+open class BXSelectionController: NSObject //<O:NSObjectProtocol> : NSObject where O:Selectable
 {
 
-	/// Selected objects are stored in a dictionary key by their id. That way each object can only be in
-	/// the selection once.
-	
-	private var selection: [Object.ID:ObjectWrapper] = [:]
-	
 	/// ObjectWrapper hold a weak reference to an object and manages the property observers
 	
 	private class ObjectWrapper
 	{
 		/// The object is stored in a weak ref so we do not retain it just because it was selected
 		
-		weak var object: Object? = nil
+		weak var object: NSObject? = nil
 		
 		/// A list of property observers. Will be replaced by Combine subscriptions in the future
 		
@@ -55,7 +53,7 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 		
 		/// Creates a new ObjectWrapper
 		
-		init(_ object:Object)
+		init(_ object:NSObject)
 		{
 			self.object = object
 		}
@@ -66,11 +64,11 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 		{
 			guard let object = object else { return }
 			
-			for (keyPath,_) in controller.registeredProperties
+			for key in controller.registeredPropertyKeys
 			{
-				self.observers += KVO(object:object, keyPath:keyPath)
+				self.observers += KVO(object:object, keyPath:key)
 				{
-					_,_ in controller.publish(forKey:keyPath)
+					_,_ in controller.publish(forKey:key)
 				}
 			}
 		}
@@ -87,15 +85,39 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	// MARK: - Register Properties
+	// MARK: -
 	
-	open func registerProperty(keypath:String, type:Any.Type)
+	/// Selected objects are stored in a dictionary key by their id. That way each object can only be in
+	/// the selection once.
+	
+	private var selection: [Selectable.ID:ObjectWrapper] = [:]
+	
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	override public init()
 	{
-//		let outputPublisher = PassthroughSubject<[T],Never>()
-		self.registeredProperties[keypath] = type
+		super.init()
 	}
 	
-	fileprivate var registeredProperties: [String:Any.Type] = [:]
+	deinit
+	{
+		
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	// MARK: - Register Properties
+	
+	open func registerProperty(key:String, type:Any.Type)
+	{
+		self.registeredPropertyKeys += key
+	}
+	
+	fileprivate var registeredPropertyKeys: [String] = []
 	
 	
 //----------------------------------------------------------------------------------------------------------------------
@@ -106,9 +128,9 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 
 	/// Adds a new object to the selection
 	
-	open func addSelectedObject(_ object:Object)
+	open func addSelectedObject(_ object:NSObject)
 	{
-		let id = object.id
+		guard let id = self.id(for:object) else { return }
 		
 		if selection[id] == nil
 		{
@@ -123,7 +145,7 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 
 	/// Adds objects to the selection
 	
-	open func addSelectedObjects(_ objects:[Object])
+	open func addSelectedObjects(_ objects:[NSObject])
 	{
 		objects.forEach { self.addSelectedObject($0) }
 	}
@@ -134,19 +156,21 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 
 	/// Removes an object from the selection
 	
-	open func removeSelectedObject(_ object:Object)
+	open func removeSelectedObject(_ object:NSObject)
 	{
-		if let wrappedObject = selection[object.id]
+		guard let id = self.id(for:object) else { return }
+
+		if let wrappedObject = selection[id]
 		{
 			wrappedObject.removeObservers()
-			selection[object.id] = nil
+			selection[id] = nil
 			self.publish()
 		}
 	}
 
 	/// Removes objects from the selection
 	
-	open func removeSelectedObjects(_ objects:[Object])
+	open func removeSelectedObjects(_ objects:[NSObject])
 	{
 		objects.forEach { self.removeSelectedObject($0) }
 	}
@@ -157,15 +181,18 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 
 	/// Replaces the current selection with a new one
 	
-	open func setSelectedObjects(_ objects: [Object])
+	open func setSelectedObjects(_ objects: [NSObject])
 	{
-		var newSelection: [Object.ID:ObjectWrapper] = [:]
+		var newSelection: [String:ObjectWrapper] = [:]
 		
 		for object in objects
 		{
-			let wrappedObject = ObjectWrapper(object)
-			wrappedObject.addObservers(for:self)
-			newSelection[object.id] = wrappedObject
+			if let id = self.id(for:object)
+			{
+				let wrappedObject = ObjectWrapper(object)
+				wrappedObject.addObservers(for:self)
+				newSelection[id] = wrappedObject
+			}
 		}
 		
 		self.selection = newSelection
@@ -175,7 +202,7 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	
 	/// Returns all selected objects as an array. The objects are not in any particular order.
 
-	open var selectedObjects: [Object]
+	open var selectedObjects: [NSObject]
 	{
 		return self.selection.values.compactMap { $0.object }
 	}
@@ -211,9 +238,17 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 
 	/// Returns true if the specified object is currently selected
 	
-	open func isSelected(_ object:Object) -> Bool
+	open func isSelected(_ object:NSObject) -> Bool
 	{
 		return self.selection.values.contains { $0.object === object }
+	}
+	
+	
+	/// Returns an id for an object
+	
+	func id(for object:NSObject) -> Selectable.ID?
+	{
+		return (object as? Selectable)?.id
 	}
 	
 	
@@ -244,6 +279,7 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	
 	override open func setValue(_ value:Any?, forKey key:String)
 	{
+		if key == "selection" { return }
 		self.selectedObjects.forEach { $0.setValue(value,forKey:key) }
 	}
 
@@ -253,6 +289,8 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	
 	override open func value(forKey key:String) -> Any?
 	{
+		if key == "selection" { return self }
+		
 		var uniqueValue: Any? = nil
 		
 		for object in self.selectedObjects
@@ -280,6 +318,8 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	
 	public func values<T:Equatable>(forKey key:String) -> [T]
 	{
+		if key == "selection" { return [] }
+
 		var values: [T] = []
 		
 		for object in self.selectedObjects
@@ -304,7 +344,7 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	
 	fileprivate func publish()
 	{
-		self.registeredProperties.keys.forEach { self.publish(forKey:$0) }
+		self.registeredPropertyKeys.forEach { self.publish(forKey:$0) }
 	}
 	
 	
