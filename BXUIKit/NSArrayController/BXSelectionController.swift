@@ -16,7 +16,7 @@ import BXSwiftUtils
 
 /// This protocol provides a way to uniquely identify objects
 
-public protocol Selectable : class
+public protocol BXSelectable : class
 {
 	typealias ID = String
 
@@ -27,7 +27,7 @@ public protocol Selectable : class
 	/// This func is called when an object is removed from its parent array, and should thus also be
 	/// removed from the selection
 	
-//	func didGetRemovedFromArray()
+	var autoDeselectHandler: ((NSObject)->Void)? { set get }
 }
 
 
@@ -36,7 +36,7 @@ public protocol Selectable : class
 
 // MARK: -
 
-open class BXSelectionController: NSObject //<O:NSObjectProtocol> : NSObject where O:Selectable
+open class BXSelectionController : NSObject
 {
 
 	/// ObjectWrapper hold a weak reference to an object and manages the property observers
@@ -64,7 +64,7 @@ open class BXSelectionController: NSObject //<O:NSObjectProtocol> : NSObject whe
 		{
 			guard let object = object else { return }
 			
-			for key in controller.registeredPropertyKeys
+			for key in controller.propertyKeys
 			{
 				self.observers += KVO(object:object, keyPath:key)
 				{
@@ -90,56 +90,59 @@ open class BXSelectionController: NSObject //<O:NSObjectProtocol> : NSObject whe
 	/// Selected objects are stored in a dictionary key by their id. That way each object can only be in
 	/// the selection once.
 	
-	private var selection: [Selectable.ID:ObjectWrapper] = [:]
+	private var selection: [BXSelectable.ID:ObjectWrapper] = [:]
 	
+	/// The list of properties to observe
+	
+	fileprivate var propertyKeys: [String] = []
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	override public init()
+	public init(withPropertyKeys keys:[String])
 	{
+		self.propertyKeys = keys
 		super.init()
 	}
 	
 	deinit
 	{
-		
+		self.cancelAllDelayedPerforms()
 	}
 	
 	
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	// MARK: - Register Properties
-	
-	open func registerProperty(key:String, type:Any.Type)
-	{
-		self.registeredPropertyKeys += key
-	}
-	
-	fileprivate var registeredPropertyKeys: [String] = []
-	
-	
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	// MARK: - Manage Selection
+	// MARK: - Selection
 
 
 	/// Adds a new object to the selection
 	
 	open func addSelectedObject(_ object:NSObject)
 	{
+		// Bail out if the object is not selectable
+		
 		guard let id = self.id(for:object) else { return }
 		
-		if selection[id] == nil
-		{
-			let wrappedObject = ObjectWrapper(object)
-			wrappedObject.addObservers(for:self)
-			selection[id] = wrappedObject
-			
-			self.publish()
-		}
+		// Bail out if the object is already selected
+		
+		guard selection[id] == nil else { return }
+		
+		// Store the object in the selection and observe its properties
+		
+		let wrappedObject = ObjectWrapper(object)
+		wrappedObject.addObservers(for:self)
+		selection[id] = wrappedObject
+		
+		// Install an optional handler that automatically deselects the object when necessary
+		
+		(object as? BXSelectable)?.autoDeselectHandler = { self.removeSelectedObject($0) }
+
+		// Publish common values to the UI
+		
+		self.publish()
 	}
 
 
@@ -189,13 +192,24 @@ open class BXSelectionController: NSObject //<O:NSObjectProtocol> : NSObject whe
 		{
 			if let id = self.id(for:object)
 			{
+				// Observe object properties
+		
 				let wrappedObject = ObjectWrapper(object)
 				wrappedObject.addObservers(for:self)
 				newSelection[id] = wrappedObject
+
+				// Install an optional handler that automatically deselects the object when necessary
+		
+				(object as? BXSelectable)?.autoDeselectHandler = { self.removeSelectedObject($0) }
 			}
 		}
 		
+		// Store new selection
+		
 		self.selection = newSelection
+		
+		// Publish common values to the UI
+		
 		self.publish()
 	}
 	
@@ -244,31 +258,6 @@ open class BXSelectionController: NSObject //<O:NSObjectProtocol> : NSObject whe
 	}
 	
 	
-	/// Returns an id for an object
-	
-	func id(for object:NSObject) -> Selectable.ID?
-	{
-		return (object as? Selectable)?.id
-	}
-	
-	
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	/// Removes wrappers with released objects from the selection.
-	
-	open func purgeReleasedObjectsFromSelection()
-	{
-		for (id,wrappedObject) in self.selection
-		{
-			if wrappedObject.object == nil
-			{
-				self.selection[id] = nil
-			}
-		}
-	}
-	
-
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -344,10 +333,14 @@ open class BXSelectionController: NSObject //<O:NSObjectProtocol> : NSObject whe
 	
 	fileprivate func publish()
 	{
-		self.registeredPropertyKeys.forEach { self.publish(forKey:$0) }
+		self.performCoalesced(#selector(_publish))
 	}
 	
-	
+	@objc fileprivate func _publish()
+	{
+		self.propertyKeys.forEach { self.publish(forKey:$0) }
+	}
+
 	/// Publishes a value change for the specified property
 	
 	fileprivate func publish(forKey key:String)
@@ -357,6 +350,34 @@ open class BXSelectionController: NSObject //<O:NSObjectProtocol> : NSObject whe
 	}
 	
 	
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	// MARK: - Helpers
+	
+	
+	/// Returns an id for an object
+	
+	func id(for object:NSObject) -> BXSelectable.ID?
+	{
+		return (object as? BXSelectable)?.id
+	}
+	
+	
+	/// Removes wrappers with released objects from the selection.
+	
+	open func purgeReleasedObjectsFromSelection()
+	{
+		for (id,wrappedObject) in self.selection
+		{
+			if wrappedObject.object == nil
+			{
+				self.selection[id] = nil
+			}
+		}
+	}
+	
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
