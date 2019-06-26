@@ -14,19 +14,18 @@ import BXSwiftUtils
 //----------------------------------------------------------------------------------------------------------------------
 
 
-#if canImport(Combine)
-
-import Combine
-
-#else
+/// This protocol provides a way to uniquely identify objects
 
 public protocol Identifiable
 {
-	typealias ID = String
+	/// The type of the identifier
+	
+	associatedtype ID: Hashable
+	
+	/// Returns the identifier for an object
+	
 	var id: Self.ID { get }
 }
-
-#endif
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -40,8 +39,7 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	/// Selected objects are stored in a dictionary key by their id. That way each object can only be in
 	/// the selection once.
 	
-	private var selection: [Identifiable.ID:ObjectWrapper] = [:]
-	
+	private var selection: [Object.ID:ObjectWrapper] = [:]
 	
 	/// ObjectWrapper hold a weak reference to an object and manages the property observers
 	
@@ -158,7 +156,7 @@ open class BXSelectionController<Object:NSObject> : NSObject where Object:Identi
 	
 	open func setSelectedObjects(_ objects: [Object])
 	{
-		var newSelection: [Identifiable.ID:ObjectWrapper] = [:]
+		var newSelection: [Object.ID:ObjectWrapper] = [:]
 		
 		for object in objects
 		{
