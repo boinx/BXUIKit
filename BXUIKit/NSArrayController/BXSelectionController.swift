@@ -469,28 +469,19 @@ open class BXSelectionController : NSObject
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	/// Deselects all objects
-	
-	open func deselectAll()
-	{
-		for (_,wrappedObject) in self.selection
-		{
-			wrappedObject.removeObservers()
-		}
-		
-		self.selection = [:]
-		self.publish()
-	}
-	
-	
-//----------------------------------------------------------------------------------------------------------------------
-
-
 	/// This property returns true if we have any selected objects
 
 	open var hasSelection:Bool
 	{
-		return self.selection.count > 0
+		return self.selectedObjectCount > 0
+	}
+	
+
+	/// Return the number of selected object
+
+	open var selectedObjectCount:Int
+	{
+		return self.selection.count
 	}
 	
 
