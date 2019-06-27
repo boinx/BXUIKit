@@ -110,6 +110,10 @@ open class BXSelectionController : NSObject
 	
 	private var propertiesObserverInfo: [PropertyObserverInfo] = []
 
+	/// A Notification that gets sent whenever the selection changes.
+	
+	public static let selectionDidChangeNotification = NSNotification.Name("BXSelectionController.selectionDidChange")
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -380,6 +384,10 @@ open class BXSelectionController : NSObject
 		wrappedObject.addObservers(for:self)
 		selection[id] = wrappedObject
 		
+		// Send notification for selection change
+		
+		NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:object)
+
 		// Install an optional handler that automatically deselects the object when necessary
 		
 		(object as? BXSelectable)?.autoDeselectHandler = { [weak self] in self?.removeSelectedObject($0) }
@@ -409,8 +417,17 @@ open class BXSelectionController : NSObject
 
 		if let wrappedObject = selection[id]
 		{
+			// Remove object from selection
+			
 			wrappedObject.removeObservers()
 			selection[id] = nil
+
+			// Send notification for selection change
+		
+			NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:object)
+
+			// Publish common values to the UI
+		
 			self.publish()
 		}
 	}
@@ -451,7 +468,19 @@ open class BXSelectionController : NSObject
 		// Store new selection
 		
 		self.selection = newSelection
+
+		// Send notifications for all changes
 		
+		Set(
+			oldSelection.values.compactMap { $0.object } +
+			newSelection.values.compactMap { $0.object }
+		)
+		.forEach
+		{
+			print("\($0)")
+			NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:$0)
+		}
+
 		// Publish common values to the UI
 		
 		self.publish()
