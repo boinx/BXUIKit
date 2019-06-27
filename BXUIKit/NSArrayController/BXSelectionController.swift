@@ -270,32 +270,31 @@ open class BXSelectionController : NSObject
 	
 	/// Sets the new value on all selected objects
 	
-	override open func setValue(_ value:Any?, forKey key:String)
+	override open func setValue(_ value:Any?, forKey _key:String)
 	{
-		// Ignore "selection" prefix. This is an essential step in providing backward compatibilty with
-		// NSArrayController style keypaths.
-		
-		if key == "selection" { return }
-		
-		// Set the value on each selected object
-		
+		let key = _key.strippingSelectionPrefix()
+		guard key.count > 0 else { return }
 		self.selectedObjects.forEach { $0.setValue(value,forKey:key) }
 	}
+
+	override open func setValue(_ value:Any?, forKeyPath _keyPath:String)
+	{
+		let keyPath = _keyPath.strippingSelectionPrefix()
+		guard keyPath.count > 0 else { return }
+		self.selectedObjects.forEach { $0.setValue(value,forKeyPath:keyPath) }
+	}
+
+
+//----------------------------------------------------------------------------------------------------------------------
 
 
 	/// Gets the values from all selected objects. If the value is unique it will be returned, otherwise
 	/// NSMultipleValuesMarker will be returned.
 	
-	override open func value(forKey key:String) -> Any?
+	override open func value(forKey _key:String) -> Any?
 	{
-		// Since the BXSelection controller will act as it own "selection" proxy, simply return self. This
-		// is an essential step in providing backward compatibilty with NSArrayController style keypaths.
-		
+		let key = _key.strippingSelectionPrefix()
 		if key == "selection" { return self }
-		
-		// For all others key proceed normally. If we have different values for a multiple selection, then
-		// return NSMultipleValuesMarker, instead of a unique value.
-		
 		var uniqueValue: Any? = nil
 		
 		for object in self.selectedObjects
@@ -317,19 +316,28 @@ open class BXSelectionController : NSObject
 	}
 	
 	
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	override open func setValue(_ value:Any?, forKeyPath _keyPath:String)
-	{
-		let keyPath = _keyPath.strippingSelectionPrefix()
-		super.setValue(value, forKeyPath:keyPath)
-	}
-	
 	override open func value(forKeyPath _keyPath:String) -> Any?
 	{
 		let keyPath = _keyPath.strippingSelectionPrefix()
-		return super.value(forKeyPath:keyPath)
+		if keyPath == "selection" { return self }
+		var uniqueValue: Any? = nil
+		
+		for object in self.selectedObjects
+		{
+			if let value = object.value(forKeyPath:keyPath)
+			{
+				if uniqueValue == nil
+				{
+					uniqueValue = value
+				}
+				else if let value1 = uniqueValue as? NSObject, let value2 = value as? NSObject, !value1.isEqual(value2)
+				{
+					return NSMultipleValuesMarker
+				}
+			}
+		}
+		
+		return uniqueValue
 	}
 	
 	
