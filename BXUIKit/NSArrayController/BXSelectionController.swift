@@ -110,6 +110,8 @@ open class BXSelectionController : NSObject
 	
 	private var propertiesObserverInfo: [PropertyObserverInfo] = []
 
+	#warning("TODO: Add undo support")
+	
 	/// A Notification that gets sent whenever the selection changes.
 	
 	public static let selectionDidChangeNotification = NSNotification.Name("BXSelectionController.selectionDidChange")
