@@ -447,6 +447,17 @@ open class BXSelectionController : NSObject
 	
 	open func setSelectedObjects(_ objects: [NSObject])
 	{
+		// First remove observers from old selection
+		
+		var oldSelection = self.selection
+
+		for (_,wrappedObject) in self.selection
+		{
+			wrappedObject.removeObservers()
+		}
+
+		// Then create and store the new selection
+		
 		var newSelection: [String:ObjectWrapper] = [:]
 		
 		for object in objects
@@ -464,8 +475,6 @@ open class BXSelectionController : NSObject
 				(object as? BXSelectable)?.autoDeselectHandler = { self.removeSelectedObject($0) }
 			}
 		}
-		
-		// Store new selection
 		
 		self.selection = newSelection
 
