@@ -486,7 +486,6 @@ open class BXSelectionController : NSObject
 		)
 		.forEach
 		{
-			print("\($0)")
 			NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:$0)
 		}
 
