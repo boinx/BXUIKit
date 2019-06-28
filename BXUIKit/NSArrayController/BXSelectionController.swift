@@ -360,23 +360,20 @@ open class BXSelectionController : NSObject
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	/// Returns an array of values. If the selection is empty, the returned array will also be empty. If the
-	/// property values for the selected objects is unique, the array will contain a single value. In case of
-	/// multiple values, the array will contain more than one value.
+	/// Returns an array of values. If the selection is empty, the returned Set will also be empty. If the
+	/// property values for the selected objects is unique, the Set will contain a single value. In case of
+	/// multiple (non-unique) values, the Set will contain more than one value.
 	
-	public func values<T:Equatable>(forKeyPath _keyPath:String) -> [T]
+	public func values<T:Equatable>(forKeyPath _keyPath:String) -> Set<T>
 	{
 		let keyPath = _keyPath.strippingSelectionPrefix()
-		var values: [T] = []
+		var values = Set<T>()
 		
 		for object in self.selectedObjects
 		{
 			if let value = object.value(forKeyPath:keyPath) as? T
 			{
-				if !values.contains { $0 == value }
-				{
-					values += value
-				}
+				values.insert(value)
 			}
 		}
 		
