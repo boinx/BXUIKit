@@ -60,7 +60,7 @@ open class BXSelectionController : NSObject
 
 		/// Adds the registered property observers on the selected object
 		
-		func addObservers(for controller:BXSelectionController)
+		func addObservers(with controller:BXSelectionController)
 		{
 			guard let object = object else { return }
 			
@@ -110,18 +110,20 @@ open class BXSelectionController : NSObject
 	
 	private var propertiesObserverInfo: [PropertyObserverInfo] = []
 
-	/// When you set an UndoManager on this controller, then any changes to the selection will be undoable
-
-	public var undoManager:UndoManager? = nil
-	
 	/// A Notification that gets sent whenever the selection changes.
 	
 	public static let selectionDidChangeNotification = NSNotification.Name("BXSelectionController.selectionDidChange")
 
+	/// When you set an UndoManager on this controller, then any changes to the selection will be undoable
+
+	public var undoManager:UndoManager? = nil
+	
 
 //----------------------------------------------------------------------------------------------------------------------
 
 
+	// MARK: - Lifetime
+	
 	public init(undoManager:UndoManager? = nil)
 	{
 		self.undoManager = undoManager
@@ -135,31 +137,6 @@ open class BXSelectionController : NSObject
 		self.cancelAllDelayedPerforms()
 	}
 	
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-	/// Returns an id for an object
-	
-	func id(for object:NSObject) -> BXSelectable.ID?
-	{
-		return (object as? BXSelectable)?.id
-	}
-	
-
-	/// Removes wrappers with released objects from the selection.
-	
-	open func purgeReleasedObjectsFromSelection()
-	{
-		for (id,wrappedObject) in self.selection
-		{
-			if wrappedObject.object == nil
-			{
-				self.selection[id] = nil
-			}
-		}
-	}
-
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -243,7 +220,7 @@ open class BXSelectionController : NSObject
 		self.selection.values.forEach
 		{
 			$0.removeObservers()
-			$0.addObservers(for:self)
+			$0.addObservers(with:self)
 		}
 	}
 
@@ -293,6 +270,8 @@ open class BXSelectionController : NSObject
 		self.selectedObjects.forEach { $0.setValue(value,forKey:key) }
 	}
 
+	/// Sets the new value on all selected objects
+	
 	override open func setValue(_ value:Any?, forKeyPath _keyPath:String)
 	{
 		let keyPath = _keyPath.strippingSelectionPrefix()
@@ -304,7 +283,7 @@ open class BXSelectionController : NSObject
 //----------------------------------------------------------------------------------------------------------------------
 
 
-	/// Gets the values from all selected objects. If the value is unique it will be returned, otherwise
+	/// Gets the value from all selected objects. If the value is unique it will be returned, otherwise
 	/// NSMultipleValuesMarker will be returned.
 	
 	override open func value(forKey _key:String) -> Any?
@@ -331,6 +310,9 @@ open class BXSelectionController : NSObject
 		return uniqueValue
 	}
 	
+	
+	/// Gets the value from all selected objects. If the value is unique it will be returned, otherwise
+	/// NSMultipleValuesMarker will be returned.
 	
 	override open func value(forKeyPath _keyPath:String) -> Any?
 	{
@@ -393,7 +375,7 @@ open class BXSelectionController : NSObject
 	{
 		// Bail out if the object is not selectable
 		
-		guard let id = self.id(for:object) else { return }
+		guard let id = (object as? BXSelectable)?.id else { return }
 		
 		// Bail out if the object is already selected
 		
@@ -402,7 +384,7 @@ open class BXSelectionController : NSObject
 		// Store the object in the selection and observe its properties
 		
 		let wrappedObject = ObjectWrapper(object)
-		wrappedObject.addObservers(for:self)
+		wrappedObject.addObservers(with:self)
 		selection[id] = wrappedObject
 		
 		// Register an undo action
@@ -441,7 +423,7 @@ open class BXSelectionController : NSObject
 	
 	open func removeSelectedObject(_ object:NSObject)
 	{
-		guard let id = self.id(for:object) else { return }
+		guard let id = (object as? BXSelectable)?.id else { return }
 
 		if let wrappedObject = selection[id]
 		{
@@ -498,12 +480,12 @@ open class BXSelectionController : NSObject
 		
 		for object in objects
 		{
-			if let id = self.id(for:object)
+			if let id = (object as? BXSelectable)?.id
 			{
 				// Observe object properties
 		
 				let wrappedObject = ObjectWrapper(object)
-				wrappedObject.addObservers(for:self)
+				wrappedObject.addObservers(with:self)
 				newSelection[id] = wrappedObject
 
 				// Install an optional handler that automatically deselects the object when necessary
