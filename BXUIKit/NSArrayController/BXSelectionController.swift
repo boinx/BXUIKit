@@ -270,8 +270,11 @@ open class BXSelectionController : NSObject
 	
 	fileprivate func publish(forKey key:String)
 	{
-		self.willChangeValue(forKey:key)
-		self.didChangeValue(forKey:key)
+		DispatchQueue.main.asyncIfNeeded
+		{
+			self.willChangeValue(forKey:key)
+			self.didChangeValue(forKey:key)
+		}
 	}
 	
 	
