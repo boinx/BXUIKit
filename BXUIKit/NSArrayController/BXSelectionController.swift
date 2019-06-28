@@ -110,12 +110,31 @@ open class BXSelectionController : NSObject
 	
 	private var propertiesObserverInfo: [PropertyObserverInfo] = []
 
-	#warning("TODO: Add undo support")
+	/// When you set an UndoManager on this controller, then any changes to the selection will be undoable
+
+	public var undoManager:UndoManager? = nil
 	
 	/// A Notification that gets sent whenever the selection changes.
 	
 	public static let selectionDidChangeNotification = NSNotification.Name("BXSelectionController.selectionDidChange")
 
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+	public init(undoManager:UndoManager? = nil)
+	{
+		self.undoManager = undoManager
+		super.init()
+	}
+
+	/// Cancel all outstanding scheduled function calls
+	
+	deinit
+	{
+		self.cancelAllDelayedPerforms()
+	}
+	
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -141,14 +160,6 @@ open class BXSelectionController : NSObject
 		}
 	}
 
-
-	/// Cancel all outstanding scheduled function calls
-	
-	deinit
-	{
-		self.cancelAllDelayedPerforms()
-	}
-	
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -394,6 +405,13 @@ open class BXSelectionController : NSObject
 		wrappedObject.addObservers(for:self)
 		selection[id] = wrappedObject
 		
+		// Register an undo action
+		
+		self.undoManager?.registerUndo(withTarget:self)
+		{
+			target in target.removeSelectedObject(object)
+		}
+
 		// Send notification for selection change
 		
 		NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:object)
@@ -432,6 +450,13 @@ open class BXSelectionController : NSObject
 			wrappedObject.removeObservers()
 			selection[id] = nil
 
+			// Register an undo action
+			
+			self.undoManager?.registerUndo(withTarget:self)
+			{
+				target in target.addSelectedObject(object)
+			}
+
 			// Send notification for selection change
 		
 			NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:object)
@@ -457,10 +482,11 @@ open class BXSelectionController : NSObject
 	
 	open func setSelectedObjects(_ objects: [NSObject])
 	{
+		var oldSelection = self.selection
+		let oldSelectedObjects = oldSelection.values.compactMap { $0.object }
+
 		// First remove observers from old selection
 		
-		var oldSelection = self.selection
-
 		for (_,wrappedObject) in self.selection
 		{
 			wrappedObject.removeObservers()
@@ -487,6 +513,13 @@ open class BXSelectionController : NSObject
 		}
 		
 		self.selection = newSelection
+
+		// Register an undo action
+	
+		self.undoManager?.registerUndo(withTarget:self)
+		{
+			target in target.setSelectedObjects(oldSelectedObjects)
+		}
 
 		// Send notifications for all changes
 		
