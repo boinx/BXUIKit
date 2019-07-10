@@ -68,7 +68,7 @@ open class BXSelectionController : NSObject
 			{
 				self.observers += KVO(object:object, keyPath:info.keyPath, options:info.options)
 				{
-					_,_ in controller.publish(forKey:info.keyPath)
+					[weak controller] _,_ in controller?.publish(forKey:info.keyPath)
 				}
 			}
 		}
