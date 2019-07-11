@@ -24,10 +24,10 @@ public protocol BXSelectable : class
 	
 	var id: ID { get }
 	
-	/// This func is called when an object is removed from its parent array, and should thus also be
-	/// removed from the selection
+	/// The handlers are called when an object is removed from the object graph,
+	/// and should thus also be removed from the selection
 	
-	var autoDeselectHandler: ((NSObject)->Void)? { set get }
+	var autoDeselectHandlers: [String:((NSObject)->Void)] { set get }
 }
 
 
@@ -118,7 +118,11 @@ open class BXSelectionController : NSObject
 
 	public var undoManager:UndoManager? = nil
 	
-
+	/// This uniquely identifies this BXSelectionController. Used as a key in the autoDeselectHandlers dictionary.
+	
+	private var id = UUID().uuidString
+	
+	
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -387,6 +391,13 @@ open class BXSelectionController : NSObject
 		wrappedObject.addObservers(with:self)
 		selection[id] = wrappedObject
 		
+		// Install an optional handler that automatically deselects the object when necessary
+
+		(object as? BXSelectable)?.autoDeselectHandlers[self.id] =
+		{
+			[weak self] in self?.removeSelectedObject($0)
+		}
+
 		// Register an undo action
 		
 		self.undoManager?.registerUndoWithAutomaticName(target:self)
@@ -397,10 +408,6 @@ open class BXSelectionController : NSObject
 		// Send notification for selection change
 		
 		NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:object)
-
-		// Install an optional handler that automatically deselects the object when necessary
-		
-		(object as? BXSelectable)?.autoDeselectHandler = { [weak self] in self?.removeSelectedObject($0) }
 
 		// Publish common values to the UI
 		
@@ -427,6 +434,10 @@ open class BXSelectionController : NSObject
 
 		if let wrappedObject = selection[id]
 		{
+			// Remove autoDeselectHandler
+			
+			(object as? BXSelectable)?.autoDeselectHandlers[self.id] = nil
+
 			// Remove object from selection
 			
 			wrappedObject.removeObservers()
@@ -490,7 +501,10 @@ open class BXSelectionController : NSObject
 
 				// Install an optional handler that automatically deselects the object when necessary
 		
-				(object as? BXSelectable)?.autoDeselectHandler = { self.removeSelectedObject($0) }
+				(object as? BXSelectable)?.autoDeselectHandlers[self.id] =
+				{
+					[weak self] in self?.removeSelectedObject($0)
+				}
 			}
 		}
 		
