@@ -375,7 +375,7 @@ open class BXSelectionController : NSObject
 
 	/// Adds a new object to the selection
 	
-	open func addSelectedObject(_ object:NSObject)
+	open func addSelectedObject(_ object:NSObject, registerUndo:Bool = true)
 	{
 		// Bail out if the object is not selectable
 		
@@ -395,16 +395,19 @@ open class BXSelectionController : NSObject
 
 		(object as? BXSelectable)?.autoDeselectHandlers[self.id] =
 		{
-			[weak self] in self?.removeSelectedObject($0)
+			[weak self] in self?.removeSelectedObject($0, registerUndo:$1)
 		}
 
 		// Register an undo action
 		
-		self.undoManager?.registerUndoWithAutomaticName(target:self)
+		if registerUndo
 		{
-			target in target.removeSelectedObject(object)
+			self.undoManager?.registerUndoWithAutomaticName(target:self)
+			{
+				target in target.removeSelectedObject(object)
+			}
 		}
-
+		
 		// Send notification for selection change
 		
 		NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:object)
@@ -417,9 +420,9 @@ open class BXSelectionController : NSObject
 
 	/// Adds objects to the selection
 	
-	open func addSelectedObjects(_ objects:[NSObject])
+	open func addSelectedObjects(_ objects:[NSObject], registerUndo:Bool = true)
 	{
-		objects.forEach { self.addSelectedObject($0) }
+		objects.forEach { self.addSelectedObject($0,registerUndo:registerUndo) }
 	}
 
 
@@ -428,7 +431,7 @@ open class BXSelectionController : NSObject
 
 	/// Removes an object from the selection
 	
-	open func removeSelectedObject(_ object:NSObject)
+	open func removeSelectedObject(_ object:NSObject, registerUndo:Bool = true)
 	{
 		guard let id = (object as? BXSelectable)?.id else { return }
 
@@ -445,11 +448,14 @@ open class BXSelectionController : NSObject
 
 			// Register an undo action
 			
-			self.undoManager?.registerUndoWithAutomaticName(target:self)
+			if registerUndo
 			{
-				target in target.addSelectedObject(object)
+				self.undoManager?.registerUndoWithAutomaticName(target:self)
+				{
+					target in target.addSelectedObject(object)
+				}
 			}
-
+			
 			// Send notification for selection change
 		
 			NotificationCenter.default.post(name:type(of:self).selectionDidChangeNotification, object:object)
@@ -462,9 +468,9 @@ open class BXSelectionController : NSObject
 
 	/// Removes objects from the selection
 	
-	open func removeSelectedObjects(_ objects:[NSObject])
+	open func removeSelectedObjects(_ objects:[NSObject], registerUndo:Bool = true)
 	{
-		objects.forEach { self.removeSelectedObject($0) }
+		objects.forEach { self.removeSelectedObject($0, registerUndo:registerUndo) }
 	}
 
 
@@ -473,7 +479,7 @@ open class BXSelectionController : NSObject
 
 	/// Replaces the current selection with a new one
 	
-	open func setSelectedObjects(_ objects: [NSObject])
+	open func setSelectedObjects(_ objects: [NSObject], registerUndo:Bool = true)
 	{
 		var oldSelection = self.selection
 		let oldSelectedObjects = oldSelection.values.compactMap { $0.object }
@@ -503,7 +509,7 @@ open class BXSelectionController : NSObject
 		
 				(object as? BXSelectable)?.autoDeselectHandlers[self.id] =
 				{
-					[weak self] in self?.removeSelectedObject($0)
+					[weak self] in self?.removeSelectedObject($0, registerUndo:$1)
 				}
 			}
 		}
@@ -512,11 +518,14 @@ open class BXSelectionController : NSObject
 
 		// Register an undo action
 	
-		self.undoManager?.registerUndoWithAutomaticName(target:self)
+		if registerUndo
 		{
-			target in target.setSelectedObjects(oldSelectedObjects)
+			self.undoManager?.registerUndoWithAutomaticName(target:self)
+			{
+				target in target.setSelectedObjects(oldSelectedObjects)
+			}
 		}
-
+		
 		// Send notifications for all changes
 		
 		Set(
