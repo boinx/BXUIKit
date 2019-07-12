@@ -24,10 +24,13 @@ public protocol BXSelectable : class
 	
 	var id: ID { get }
 	
-	/// The handlers are called when an object is removed from the object graph,
-	/// and should thus also be removed from the selection
+	/// The handlers are called when an object is removed from the object graph, and should thus also be removed
+	/// from the selection. The arguments to the handler are the object that should be removed from the selection,
+	/// and a Bool that indicated whether the object is still alive (true) or currently dying (false).
 	
-	var autoDeselectHandlers: [String:((NSObject)->Void)] { set get }
+	var autoDeselectHandlers: [String:BXAutoDeselectHandler] { set get }
+
+	typealias BXAutoDeselectHandler = (NSObject,Bool) -> Void
 }
 
 
