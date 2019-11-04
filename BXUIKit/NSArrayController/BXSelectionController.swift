@@ -121,6 +121,10 @@ open class BXSelectionController : NSObject
 
 	public var undoManager:UndoManager? = nil
 	
+	/// The debugName is only used for identifying different instances of this class during debugging or logging
+	
+	public var debugName: String = ""
+	
 	/// This uniquely identifies this BXSelectionController. Used as a key in the autoDeselectHandlers dictionary.
 	
 	private var id = UUID().uuidString
@@ -131,9 +135,10 @@ open class BXSelectionController : NSObject
 
 	// MARK: - Lifetime
 	
-	public init(undoManager:UndoManager? = nil)
+	public init(undoManager:UndoManager? = nil, debugName:String = "")
 	{
 		self.undoManager = undoManager
+		self.debugName = debugName
 		super.init()
 	}
 
