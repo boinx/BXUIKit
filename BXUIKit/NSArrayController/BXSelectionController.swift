@@ -42,7 +42,7 @@ public protocol BXSelectable : class
 open class BXSelectionController : NSObject
 {
 
-	/// ObjectWrapper hold a weak reference to an object and manages the property observers
+	/// ObjectWrapper holds a weak reference to an object and manages the property observers
 	
 	private class ObjectWrapper
 	{
@@ -163,8 +163,8 @@ open class BXSelectionController : NSObject
 	{
 		// If the keypath starts with "selection." strip the prefix. This is done because most historic code with
 		// NSArrayControllers binds a control with a keypath like "selection.propertyName". Since BXSelectionController
-		// is a lightweight replacement for NSArrayController, and BXSelectionController doesn't use a "selection"
-		// proxy, we simply strip this part from the keypath to remain backwards compatible.
+		// is a lightweight replacement for NSArrayController, and BXSelectionController doesn't use an internal
+		// "selection" proxy object, we simply strip this part from the keypath to remain backwards compatible.
 		
 		let keyPath = _keyPath.strippingSelectionPrefix()
 		
@@ -172,7 +172,7 @@ open class BXSelectionController : NSObject
 		
 		super.addObserver(observer, forKeyPath:keyPath, options:options, context:context)
 		
-		// Record the info for this property, so that it can be observed on object added to the selection at
+		// Record the info for this property, so that it can be observed on objects added to the selection at
 		// a later time. Please note that if the property is already in the array, we won't add it again.
 		
 		for info in self.propertiesObserverInfo
@@ -489,7 +489,7 @@ open class BXSelectionController : NSObject
 	
 	open func setSelectedObjects(_ objects: [NSObject], registerUndo:Bool = true)
 	{
-		var oldSelection = self.selection
+		let oldSelection = self.selection
 		let oldSelectedObjects = oldSelection.values.compactMap { $0.object }
 
 		// First remove observers from old selection
