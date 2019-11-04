@@ -169,7 +169,9 @@ open class BXSelectionController : NSObject
 		let keyPath = _keyPath.strippingSelectionPrefix()
 		
 		// Add the observer to self. The UI control is now observing this controller.
-		
+
+//print("\(debugName).addObserver observer=\(observer) keyPath='\(keyPath)' context=\(context)")
+
 		super.addObserver(observer, forKeyPath:keyPath, options:options, context:context)
 		
 		// Record the info for this property, so that it can be observed on objects added to the selection at
@@ -193,6 +195,9 @@ open class BXSelectionController : NSObject
 		// Remove the observer from self (the controller) and delete the property info from the list
 		
 		let keyPath = _keyPath.strippingSelectionPrefix()
+
+//print("\(debugName).removeObserver observer=\(observer) keyPath='\(keyPath)' context=\(context)")
+
 		super.removeObserver(observer, forKeyPath:keyPath, context:context)
 		self.propertiesObserverInfo.removeAll { $0.keyPath == keyPath }
 		
@@ -207,6 +212,9 @@ open class BXSelectionController : NSObject
 		// Remove the observer from self (the controller) and delete the property info from the list
 		
 		let keyPath = _keyPath.strippingSelectionPrefix()
+
+//print("\(debugName).removeObserver observer=\(observer) keyPath='\(keyPath)'")
+
 		super.removeObserver(observer, forKeyPath:keyPath)
 		self.propertiesObserverInfo.removeAll { $0.keyPath == keyPath }
 		
@@ -385,6 +393,8 @@ open class BXSelectionController : NSObject
 	
 	open func addSelectedObject(_ object:NSObject, registerUndo:Bool = true)
 	{
+//print("\(debugName).addSelectedObject")
+
 		// Bail out if the object is not selectable
 		
 		guard let id = (object as? BXSelectable)?.id else { return }
@@ -441,6 +451,8 @@ open class BXSelectionController : NSObject
 	
 	open func removeSelectedObject(_ object:NSObject, registerUndo:Bool = true)
 	{
+//print("\(debugName).removeSelectedObject")
+
 		guard let id = (object as? BXSelectable)?.id else { return }
 
 		if let wrappedObject = selection[id]
