@@ -125,7 +125,7 @@ open class NSArrayController : NSObject
 	{
 		set
 		{
-			if let array = content as? [Any]
+			if let array = newValue as? [Any]
 			{
 				self.contentArray = NSMutableArray(array:array)
 				self.rearrangeObjects()
