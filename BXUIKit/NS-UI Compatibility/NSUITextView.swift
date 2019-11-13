@@ -269,7 +269,7 @@ extension NSTextAlignment
 		}
 		else if value == NSTextAlignment.center.rawValue
 		{
-            return UInt(NSTextAlignment.center.rawValue)
+            return NSTextAlignment.right.rawValue
 		}
 		
 		return value
