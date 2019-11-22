@@ -249,7 +249,7 @@ extension NSTextAlignment
 	{
 		var value = intValue
 		value = NSTextAlignment.swapRightAndCenter(value)
-		self.init(rawValue:value)
+        self.init(rawValue:UInt(value))
 	}
 	
 	/// The order of intValue follows iOS conventions, i.e. left, center, right, justified.
@@ -257,19 +257,19 @@ extension NSTextAlignment
 	public var intValue:Int
 	{
 		var value = self.rawValue
-        value = NSTextAlignment.swapRightAndCenter(value)
-		return value
+        value = UInt(NSTextAlignment.swapRightAndCenter(Int(value)))
+        return Int(value)
 	}
 	
 	private static func swapRightAndCenter(_ value:Int) -> Int
 	{
 		if value == NSTextAlignment.right.rawValue
 		{
-            return NSTextAlignment.center.rawValue
+            return Int(NSTextAlignment.center.rawValue)
 		}
 		else if value == NSTextAlignment.center.rawValue
 		{
-            return NSTextAlignment.right.rawValue
+            return Int(NSTextAlignment.right.rawValue)
 		}
 		
 		return value
