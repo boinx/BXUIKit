@@ -101,5 +101,17 @@ public extension NSUIView
 	}
 
 	#endif
+	
+	
+    #if os(macOS)
+
+	/// Provides the same convenience API as on iOS
+	
+	var contentScaleFactor:CGFloat
+	{
+		return self.window?.backingScaleFactor ?? 2.0
+	}
+	
+	#endif
 
 }
