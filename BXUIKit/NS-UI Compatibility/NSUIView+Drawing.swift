@@ -94,7 +94,7 @@ public extension NSUIView
 
 	/// Provides the same convenience API as on iOS
 	
-	var alpha:CGFloat
+	@objc var alpha:CGFloat
 	{
 		set { self.layer?.opacity = Float(newValue) }
 		get { return CGFloat(self.layer?.opacity ?? 0.0)  }
@@ -107,7 +107,7 @@ public extension NSUIView
 
 	/// Provides the same convenience API as on iOS
 	
-	var contentScaleFactor:CGFloat
+	@objc open var contentScaleFactor:CGFloat
 	{
 		return self.window?.backingScaleFactor ?? 2.0
 	}
