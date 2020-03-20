@@ -42,9 +42,8 @@ extension NSUIFont
 		
 		#else
 
-		#warning("TODO: implement")
-		return ""
-		
+		return self.fontDescriptor.object(forKey:.face) as? String ?? ""
+
 		#endif
 	}
 }
