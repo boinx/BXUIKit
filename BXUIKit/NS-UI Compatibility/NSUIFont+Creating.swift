@@ -73,21 +73,34 @@ extension NSUIFont
 	
 	public func withFamily(_ family:String) -> NSUIFont
 	{
-		#if os(iOS)
-		
 		let traits = self.fontDescriptor.symbolicTraits
+		let size = self.pointSize
+
+		#if os(iOS)
 		
 		var desc = UIFontDescriptor()
 	 	desc = desc.withFamily(family)
 	 	if let d = desc.withSymbolicTraits(traits) { desc = d }
+	 	
 		return UIFont(descriptor:desc, size:self.pointSize)
 		
 		#else
 		
-		var desc = self.fontDescriptor
-		desc = desc.withFamily(family)
-		let size = self.pointSize
-		return NSFont(descriptor:desc,size:size) ?? NSFont.systemFont(ofSize:size)
+		// On macOS there seems to be a bug with NSFontDescriptor.withSymbolicTraits(). It should return the type
+		// NSFontDescriptor (non-optional), but sometimes we get nil (0x0) - how can that even be possible ?!?
+		// Creating an NSFont with this uninitialized descriptor fails. For this reason we need a robust fallback
+		// strategy: First try the descriptor with the desired family and traits, if that fails then just use the
+		// family, finally just use Helvetica.
+		
+		let font0 = NSFont(family:"Helvetica", face:"Regular", size:size)
+		
+		let desc1 = NSFontDescriptor().withFamily(family)
+		let font1 = NSFont(descriptor:desc1, size:size)
+		
+		let desc2 = desc1.withSymbolicTraits(traits)
+		let font2 = NSFont(descriptor:desc2, size:size)
+		
+		return font2 ?? font1 ?? font0 ?? NSFont.systemFont(ofSize:size)
 
 		#endif
 	}
@@ -100,10 +113,10 @@ extension NSUIFont
 	
 	public func withFace(_ face:String) -> NSUIFont
 	{
-		#if os(iOS)
-		
-		let family = self.familyName
+		let family = self.familyName ?? "Helvetica"
 		let size = self.pointSize
+		
+		#if os(iOS)
 		
 		var desc = UIFontDescriptor()
 		desc = desc.withFamily(family)
@@ -112,10 +125,14 @@ extension NSUIFont
 		
 		#else
 		
-		var desc = self.fontDescriptor
+		var desc = NSFontDescriptor()
+		desc = desc.withFamily(family)
 		desc = desc.withFace(face)
-		let size = self.pointSize
-		return NSFont(descriptor:desc,size:size) ?? NSFont.systemFont(ofSize:size)
+
+		return
+			NSFont(descriptor:desc, size:size) ??
+			NSFont(family:"Helvetica", face:"Regular", size:size) ??
+			NSFont.systemFont(ofSize:size)
 
 		#endif
 	}
@@ -130,8 +147,10 @@ extension NSUIFont
 
 	public func withSize(_ size:CGFloat) -> NSUIFont
 	{
-		let desc = self.fontDescriptor
-		return NSFont(descriptor:desc,size:size) ?? NSFont.systemFont(ofSize:size)
+		return
+			NSFont(name:self.fontName, size:size) ??
+			NSFont(family:"Helvetica", face:"Regular", size:size) ??
+			NSFont.systemFont(ofSize:size)
 	}
 
 	#endif
