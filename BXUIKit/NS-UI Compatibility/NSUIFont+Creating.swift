@@ -113,11 +113,12 @@ extension NSUIFont
 	
 	public func withFace(_ face:String) -> NSUIFont
 	{
-		let family = self.familyName ?? "Helvetica"
 		let size = self.pointSize
 		
 		#if os(iOS)
 		
+		let family = self.familyName 
+
 		var desc = UIFontDescriptor()
 		desc = desc.withFamily(family)
 		desc = desc.withFace(face)
@@ -125,6 +126,8 @@ extension NSUIFont
 		
 		#else
 		
+		let family = self.familyName ?? "Helvetica"
+
 		var desc = NSFontDescriptor()
 		desc = desc.withFamily(family)
 		desc = desc.withFace(face)

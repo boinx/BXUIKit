@@ -27,7 +27,7 @@ import AppKit
 
 public func NSUIRectFill(_ rect:CGRect)
 {
-	UIRectFill(rect)
+	UIRectFillUsingBlendMode(rect,.normal)
 }
 
 //public func NSUIRectFillUsingOperation(_ rect:CGRect, _ op:NSCompositingOperation)
@@ -66,7 +66,7 @@ public func NSUIRectClip(_ rect: CGRect)
    
 public func NSUIRectFill(_ rect:CGRect)
 {
-    __NSRectFill(rect)
+    __NSRectFillUsingOperation(rect,NSCompositingOperationSourceOver)
 }
  
 public func NSUIRectFillUsingOperation(_ rect:CGRect, _ op:NSCompositingOperation)
