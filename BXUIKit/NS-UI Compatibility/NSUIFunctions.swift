@@ -66,7 +66,7 @@ public func NSUIRectClip(_ rect: CGRect)
    
 public func NSUIRectFill(_ rect:CGRect)
 {
-    __NSRectFillUsingOperation(rect,NSCompositingOperationSourceOver)
+    __NSRectFillUsingOperation(rect,.sourceOver)
 }
  
 public func NSUIRectFillUsingOperation(_ rect:CGRect, _ op:NSCompositingOperation)
