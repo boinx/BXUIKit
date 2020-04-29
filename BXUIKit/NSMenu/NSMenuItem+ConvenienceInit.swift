@@ -61,7 +61,7 @@ extension NSMenuItem
 	/// - parameter state: Determines whether the NSMenuItem gets a checkmark
 	/// - parameter action: This closure is executed when the NSMenuItem is selected
 
-	public convenience init(title:String, key modifiers:NSEvent.ModifierFlags = [], _ key:String = "", state:NSControl.StateValue = .off, action:@escaping ()->Void)
+	public convenience init(title:String, key modifiers:NSEvent.ModifierFlags = [], _ key:String = "", state:NSControl.StateValue = .off, enabled:Bool = true, action:@escaping ()->Void)
 	{
 		let actionWrapper = BXActionWrapper(action)
 
@@ -70,6 +70,7 @@ extension NSMenuItem
 		self.representedObject = actionWrapper	// Assign to representedObject to make sure it is retained
 		self.keyEquivalentModifierMask = modifiers
 		self.state = state
+		self.isEnabled = enabled
 	}
 }
 

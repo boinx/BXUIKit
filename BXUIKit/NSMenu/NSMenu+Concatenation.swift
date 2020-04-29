@@ -29,6 +29,7 @@ extension NSMenu
 		self.addItem(item)
 
 		let submenu = NSMenu()
+		submenu.autoenablesItems = false
 		self.setSubmenu(submenu, for:item)
 		return submenu
 	}
