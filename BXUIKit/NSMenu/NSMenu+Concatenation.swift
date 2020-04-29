@@ -12,13 +12,26 @@ import AppKit
 
 extension NSMenu
 {
-    /**
-     Appends a menu item to a menu using a conventient notation.
-     */
+    /// Appends a menu item to a menu using a conventient notation.
+
     public static func +=(menu: NSMenu, item: NSMenuItem)
     {
         menu.addItem(item)
     }
+
+
+	/// Appends a submenu with the specified title.
+	/// - returns: The newly created submenu
+	
+	public func addSubMenu(title:String) -> NSMenu
+	{
+		let item = NSMenuItem(title:title, action:nil, keyEquivalent:"")
+		self.addItem(item)
+
+		let submenu = NSMenu()
+		self.setSubmenu(submenu, for:item)
+		return submenu
+	}
 }
 
 #endif

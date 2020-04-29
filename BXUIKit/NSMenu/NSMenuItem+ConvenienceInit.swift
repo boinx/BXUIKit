@@ -9,6 +9,8 @@
 #if os(macOS)
 
 import AppKit
+import BXSwiftUtils
+
 
 extension NSMenuItem
 {
@@ -50,6 +52,25 @@ extension NSMenuItem
     {
         self.init(title: value.rawValue, value: value)
     }
+
+
+	/// Creates an NSMenuItem with the specified title, key, and modifiers. The action closure is automatically executed when the menu item is selected.
+	/// - parameter title: The item's displayable title.
+	/// - parameter modifiers: The hotkey modifiers
+	/// - parameter key: The hotkey character
+	/// - parameter state: Determines whether the NSMenuItem gets a checkmark
+	/// - parameter action: This closure is executed when the NSMenuItem is selected
+
+	public convenience init(title:String, key modifiers:NSEvent.ModifierFlags = [], _ key:String = "", state:NSControl.StateValue = .off, action:@escaping ()->Void)
+	{
+		let actionWrapper = BXActionWrapper(action)
+
+		self.init(title:title, action:#selector(BXActionWrapper.execute), keyEquivalent:key.lowercased())
+		self.target = actionWrapper				// Not retained!
+		self.representedObject = actionWrapper	// Assign to representedObject to make sure it is retained
+		self.keyEquivalentModifierMask = modifiers
+		self.state = state
+	}
 }
 
 #endif
