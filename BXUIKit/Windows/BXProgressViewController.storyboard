@@ -30,7 +30,7 @@
         <!--Progress View Controller-->
         <scene sceneID="QR2-tD-7t9">
             <objects>
-                <viewController id="5Jk-jk-MNo" customClass="BXProgressViewController" sceneMemberID="viewController">
+                <viewController id="5Jk-jk-MNo" customClass="BXProgressViewController" customModule="BXUIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="c55-Gf-fTd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTe-6L-iD5">
                                 <rect key="frame" x="18" y="68" width="284" height="16"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Opening" id="deM-TD-67f">
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="deM-TD-67f">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -73,7 +73,7 @@
                 </viewController>
                 <customObject id="Yku-vJ-JWB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-255" y="1562"/>
+            <point key="canvasLocation" x="-244" y="1562"/>
         </scene>
     </scenes>
 </document>
