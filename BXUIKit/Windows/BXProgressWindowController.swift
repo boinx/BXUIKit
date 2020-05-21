@@ -22,7 +22,11 @@ open class BXProgressWindowController : NSWindowController
 	{
 		let bundle = Bundle(for:BXProgressWindowController.self)
 		let storyboard = NSStoryboard(name:"BXProgressViewController", bundle:bundle)
-		return storyboard.instantiateInitialController() as! BXProgressWindowController
+		let controller = storyboard.instantiateInitialController() as! BXProgressWindowController
+		
+		_ = controller.window
+		
+		return controller
 	}()
 
 
