@@ -239,7 +239,9 @@ extension NSTextAlignment
 #endif
 
 
-#if os(macOS)
+#if os(macOS) && canImport(Combine)
+
+// Ugly hack: canImport(Combine) is a compile time check for macOS 10.15 SDK to make it build on macOS 10.13
 
 extension NSTextAlignment
 {

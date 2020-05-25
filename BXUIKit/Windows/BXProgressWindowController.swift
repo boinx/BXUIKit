@@ -32,7 +32,7 @@ open class BXProgressWindowController : NSWindowController
 
 	var progressViewController:BXProgressViewController?
 	{
-		self.contentViewController as? BXProgressViewController
+		return self.contentViewController as? BXProgressViewController
 	}
 
 
