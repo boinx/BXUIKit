@@ -107,7 +107,7 @@ public extension NSUIView
 
 	/// Provides the same convenience API as on iOS
 	
-	@objc var contentScaleFactor:CGFloat
+	@objc open var contentScaleFactor:CGFloat
 	{
 		return self.window?.backingScaleFactor ?? 2.0
 	}
