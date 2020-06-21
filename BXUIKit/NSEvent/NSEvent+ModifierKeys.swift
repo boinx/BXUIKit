@@ -65,6 +65,13 @@ extension NSEvent
 	{
 		return self.modifierFlags.intersection([.command,.option,.control,.shift,.capsLock]).isEmpty
 	}
+
+	/// Returns true if this is a context menu event, i.e. a right click or a left click with pressed control key.
+	
+	public var isContextMenu:Bool
+	{
+		return self.type == .rightMouseDown || (self.type == .leftMouseDown && self.isControlDown)
+	}
 }
 
 
