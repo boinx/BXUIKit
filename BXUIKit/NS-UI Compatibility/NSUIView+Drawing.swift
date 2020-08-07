@@ -17,26 +17,26 @@ import UIKit
 #endif
 
 
-public extension NSUIView
+extension NSUIView
 {
     #if os(iOS)
 
     // Provides the macOS style needsDisplay/needsLayout/needsUpdateConstraints property to UIView.
     // That way the same code can be used on both platforms.
     
-    var needsDisplay:Bool
+    public var needsDisplay:Bool
     {
         set { if newValue { self.setNeedsDisplay() } }
         get { return false }
     }
 
-    var needsLayout:Bool
+    public var needsLayout:Bool
     {
         set { if newValue { self.setNeedsLayout() } }
         get { return false }
     }
 
-    var needsUpdateConstraints:Bool
+    public var needsUpdateConstraints:Bool
     {
         set { if newValue { self.setNeedsUpdateConstraints() } }
         get { return false }
@@ -49,17 +49,17 @@ public extension NSUIView
     // Provides the iOS style setNeedsDisplay()/setNeedsLayout()/setNeedsUpdateConstraints() method to NSView.
     // That way the same code can be used on both platforms.
     
-    func setNeedsDisplay()
+    public func setNeedsDisplay()
     {
         self.needsDisplay = true
     }
 
-    func setNeedsLayout()
+    public func setNeedsLayout()
     {
         self.needsLayout = true
     }
 
-    func setNeedsUpdateConstraints()
+    public func setNeedsUpdateConstraints()
     {
         self.needsUpdateConstraints = true
     }
@@ -68,7 +68,7 @@ public extension NSUIView
 
     /// Returns the current CGContext for drawing
     
-    var currentCGContext : CGContext?
+    public var currentCGContext : CGContext?
     {
         #if os(iOS)
         return UIGraphicsGetCurrentContext()
@@ -80,7 +80,7 @@ public extension NSUIView
     
     /// Saves the current graphics state, then executes the drawing block and then restores the state again.
 
-    func drawPreservingGraphicsState(_ block:()->Void)
+    public func drawPreservingGraphicsState(_ block:()->Void)
     {
         guard let context = self.currentCGContext else { return }
 
@@ -94,7 +94,7 @@ public extension NSUIView
 
 	/// Provides the same convenience API as on iOS
 	
-	@objc var alpha:CGFloat
+	@objc open var alpha:CGFloat
 	{
 		set { self.layer?.opacity = Float(newValue) }
 		get { return CGFloat(self.layer?.opacity ?? 0.0)  }
@@ -107,7 +107,7 @@ public extension NSUIView
 
 	/// Provides the same convenience API as on iOS
 	
-	@objc var contentScaleFactor:CGFloat
+	@objc open var contentScaleFactor:CGFloat
 	{
 		return self.window?.backingScaleFactor ?? 2.0
 	}
