@@ -55,17 +55,19 @@ extension NSMenuItem
 
 
 	/// Creates an NSMenuItem with the specified title, key, and modifiers. The action closure is automatically executed when the menu item is selected.
+	/// - parameter identifier: The optional identifier for the NSMenuItem
 	/// - parameter title: The item's displayable title.
 	/// - parameter modifiers: The hotkey modifiers
 	/// - parameter key: The hotkey character
 	/// - parameter state: Determines whether the NSMenuItem gets a checkmark
 	/// - parameter action: This closure is executed when the NSMenuItem is selected
 
-	public convenience init(title:String, indentationLevel:Int = 0, key modifiers:NSEvent.ModifierFlags = [], _ key:String = "", state:NSControl.StateValue = .off, enabled:Bool = true, action:@escaping ()->Void)
+	public convenience init(identifier:String = "", title:String, indentationLevel:Int = 0, key modifiers:NSEvent.ModifierFlags = [], _ key:String = "", state:NSControl.StateValue = .off, enabled:Bool = true, action:@escaping ()->Void)
 	{
 		let actionWrapper = BXActionWrapper(action)
 
 		self.init(title:title, action:#selector(BXActionWrapper.execute), keyEquivalent:key.lowercased())
+		self.identifier = NSUserInterfaceItemIdentifier(rawValue:identifier)
 		self.target = actionWrapper				// Not retained!
 		self.representedObject = actionWrapper	// Assign to representedObject to make sure it is retained
 		self.keyEquivalentModifierMask = modifiers
