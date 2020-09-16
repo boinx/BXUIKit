@@ -34,6 +34,7 @@
 		D06CC90821773A1D009C2991 /* NSUIFont+Creating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC90621773A1D009C2991 /* NSUIFont+Creating.swift */; };
 		D06CC956217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */; };
 		D087886B2189A64A00FE19B5 /* BXColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D087886A2189A64A00FE19B5 /* BXColumnView.swift */; };
+		D08F5A7325120EAB00107334 /* BXMenuItemHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08F5A7225120EAB00107334 /* BXMenuItemHandler.swift */; };
 		D09ADE652407BBC300182E8D /* NSView+animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09ADE642407BBC300182E8D /* NSView+animate.swift */; };
 		D0C12FA324D99153009E5EE2 /* NSView+renderedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C12FA224D99153009E5EE2 /* NSView+renderedImage.swift */; };
 		D0C3A1682187092700E67851 /* NSUILayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3A1662187092700E67851 /* NSUILayoutGuide.swift */; };
@@ -89,6 +90,7 @@
 		D06CC90621773A1D009C2991 /* NSUIFont+Creating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIFont+Creating.swift"; sourceTree = "<group>"; };
 		D06CC955217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Chaining.swift"; sourceTree = "<group>"; };
 		D087886A2189A64A00FE19B5 /* BXColumnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXColumnView.swift; sourceTree = "<group>"; };
+		D08F5A7225120EAB00107334 /* BXMenuItemHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BXMenuItemHandler.swift; sourceTree = "<group>"; };
 		D09ADE642407BBC300182E8D /* NSView+animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+animate.swift"; sourceTree = "<group>"; };
 		D0C12FA224D99153009E5EE2 /* NSView+renderedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+renderedImage.swift"; sourceTree = "<group>"; };
 		D0C3A1662187092700E67851 /* NSUILayoutGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUILayoutGuide.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				48472C3221746B7800549686 /* BXMenuItem.swift */,
 				48472C3421746B8500549686 /* NSMenu+Concatenation.swift */,
 				48472C3621746B8D00549686 /* NSMenuItem+ConvenienceInit.swift */,
+				D08F5A7225120EAB00107334 /* BXMenuItemHandler.swift */,
 			);
 			path = NSMenu;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				48472C3521746B8500549686 /* NSMenu+Concatenation.swift in Sources */,
 				D06CC8F821772FDF009C2991 /* NSUIWindow.swift in Sources */,
 				D06CC8F621772FDF009C2991 /* NSUIImage.swift in Sources */,
+				D08F5A7325120EAB00107334 /* BXMenuItemHandler.swift in Sources */,
 				481A25B92175AD2600FB8E9A /* NSUIVIew+RoundedCorners.swift in Sources */,
 				D06CC8FC21772FDF009C2991 /* NSUILabel.swift in Sources */,
 				D06CC8FE21772FDF009C2991 /* NSUITextView.swift in Sources */,
