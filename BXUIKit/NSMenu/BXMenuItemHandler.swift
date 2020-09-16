@@ -10,6 +10,7 @@
 #if os(macOS)
 
 import AppKit
+import BXSwiftUtils
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -63,9 +64,12 @@ public struct BXMenuItemHandler
 		
 		// If the menu item doesn't have an action yet, then automatically set it to executeMenuItem
 		
-		if let item = NSMenu.main?.menuItem(forIdentifier:identifier), item.action == nil
+		NSMenu.main?.menuItems(forIdentifier:identifier).forEach
 		{
-			item.action = #selector(BXProxyObject.executeMenuItem)
+			if $0.action == nil
+			{
+				$0.action = #selector(BXProxyObject.executeMenuItem)
+			}
 		}
 	}
 }
@@ -191,22 +195,32 @@ public extension NSMenu
 
 	/// Performs a recursive search for a NSMenuItem with the specified identifier
 
-	func menuItem(forIdentifier identifier:String) -> NSMenuItem?
+	func menuItems(forIdentifier identifier:String) -> [NSMenuItem]
 	{
+		var menuItems:[NSMenuItem] = []
+		let prefix = identifier.replacingOccurrences(of:"*", with:"")
+		
 		for item in self.items
 		{
-			if item.identifier?.rawValue == identifier
+			if let id = item.identifier?.rawValue
 			{
-				return item
+				if identifier.hasSuffix("*") && id.hasPrefix(prefix)
+				{
+					menuItems += item
+				}
+				else if id == identifier
+				{
+					menuItems += item
+				}
 			}
-
-			if let submenu = item.submenu, let item = submenu.menuItem(forIdentifier:identifier)
+			
+			if let submenu = item.submenu
 			{
-				return item
+				menuItems += submenu.menuItems(forIdentifier:identifier)
 			}
 		}
 
-		return nil
+		return menuItems
 	}
 }
 
