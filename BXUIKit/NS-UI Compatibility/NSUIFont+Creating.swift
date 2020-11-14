@@ -147,8 +147,10 @@ extension NSUIFont
 	/// Creates a new font with the specified point size
 	
 	#if os(macOS)
+	
+//	@available(macOS, obsoleted:10.16)
 
-	public func withSize(_ size:CGFloat) -> NSUIFont
+	public func _withSize(_ size:CGFloat) -> NSUIFont
 	{
 		return
 			NSFont(name:self.fontName, size:size) ??
