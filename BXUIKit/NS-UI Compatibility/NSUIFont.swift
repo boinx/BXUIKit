@@ -46,6 +46,22 @@ extension NSUIFont
 
 		#endif
 	}
+
+
+	public var localizedFaceName : String
+	{
+		#if os(iOS)
+		
+		return self.fontDescriptor.object(forKey:.face) as? String ?? ""
+		
+		#else
+
+		let family = self.fontDescriptor.object(forKey:.family) as? String ?? ""
+		let face = self.fontDescriptor.object(forKey:.face) as? String
+		return NSFontManager.shared.localizedName(forFamily:family, face:face)
+
+		#endif
+	}
 }
 
 
