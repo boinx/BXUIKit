@@ -150,14 +150,14 @@ extension NSUIFont
 	
 //	@available(macOS, obsoleted:10.16)
 
-	public func _withSize(_ size:CGFloat) -> NSUIFont
+	public func legacy_withSize(_ size:CGFloat) -> NSUIFont
 	{
 		return
 			NSFont(name:self.fontName, size:size) ??
 			NSFont(family:"Helvetica", face:"Regular", size:size) ??
 			NSFont.systemFont(ofSize:size)
 	}
-
+	
 	#endif
 }
 
