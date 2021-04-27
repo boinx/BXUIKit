@@ -2,7 +2,7 @@
 //
 //  NSEvent+ModifierKeys.swift
 //	Adds convenience methods for checking modified keys
-//  Copyright ©2017 Peter Baumgartner. All rights reserved.
+//  Copyright ©2017-21 Peter Baumgartner. All rights reserved.
 //
 //**********************************************************************************************************************
 
@@ -20,7 +20,7 @@ extension NSEvent
 	
     public var key:Int
 	{
-        let str = charactersIgnoringModifiers!.utf16
+        guard let str = charactersIgnoringModifiers?.utf16  else { return 0 }
         return Int(str[str.startIndex])
     }
 
