@@ -30,6 +30,22 @@ public extension UIApplication
     {
         return self.keyWindow?.rootViewController?.frontmostViewController(excluding: classTypes)
     }
+    
+	/// Helper function to display a modal alert on the frontmost UIViewController
+
+	func displayAlert(title:String, message:String, buttons:[(String,(UIAlertAction)->Void)] = [("OK",{ _ in })])
+	{
+		let alert = UIAlertController(title:title, message:message, preferredStyle:.alert)
+
+		for buttonInfo in buttons
+		{
+			let action = UIAlertAction(title:buttonInfo.0, style:.default, handler:buttonInfo.1)
+			alert.addAction(action)
+		}
+
+		self.frontmostViewController?.present(alert, animated:true, completion:nil)
+	}
+
 }
 
 
