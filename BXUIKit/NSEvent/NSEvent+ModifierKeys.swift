@@ -16,12 +16,16 @@ import AppKit
 
 extension NSEvent
 {
-	/// Returns the keycode, useful for arrow keys of other function keys.
+	/// Returns the key, useful for arrow keys or other function keys. THis accessor return ASCII values, so space is 32 or ESC is 27
+	///
+	/// Please note that the returned values are DIFFERENT from the keyCode accessor, which return virtual codes, e.g. keyCode for spacebar doesn't return 32.
 	
     public var key:Int
 	{
         guard let str = charactersIgnoringModifiers?.utf16  else { return 0 }
-        return Int(str[str.startIndex])
+        let i = str.startIndex
+        guard i < str.endIndex else { return 0 }
+        return Int(str[i])
     }
 
 	/// Returns true if the command key is down.
