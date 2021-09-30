@@ -21,8 +21,12 @@ extension NSUIView
 {
 	// Provide a closure based API on UIView that let us define auto-layout constraints for a single view
 
-    public func defineLayout(using closure: (NSUIView)->Void)
+    public func defineLayout(isActive:Bool = true, _ closure: (NSUIView)->Void)
     {
+		let oldValue = isActiveForNewContraints
+		isActiveForNewContraints = isActive
+		defer { isActiveForNewContraints = oldValue }
+		
         self.translatesAutoresizingMaskIntoConstraints = false
         closure(self)
     }
@@ -40,6 +44,9 @@ extension NSUIView
     public var width : NSLayoutDimension		{ return self.widthAnchor 	 }
     public var height : NSLayoutDimension		{ return self.heightAnchor 	 }
 }
+
+
+fileprivate var isActiveForNewContraints = true
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -103,35 +110,35 @@ public func - <A:LayoutAnchor> (lhs:A, rhs:CGFloat) -> (A,CGFloat)
 @discardableResult public func == <A:LayoutAnchor> (lhs:A, rhs:(A,CGFloat)) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( equalTo:rhs.0, constant:rhs.1)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func == (lhs:NSLayoutXAxisAnchor, rhs:NSLayoutXAxisAnchor) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( equalTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func == (lhs:NSLayoutYAxisAnchor, rhs:NSLayoutYAxisAnchor) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( equalTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func == (lhs:NSLayoutDimension, rhs:NSLayoutDimension) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( equalTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func == (lhs:NSLayoutDimension, rhs:CGFloat) -> NSLayoutConstraint
 {
 	let constraint = lhs.constraint(equalToConstant: rhs)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
@@ -144,35 +151,35 @@ public func - <A:LayoutAnchor> (lhs:A, rhs:CGFloat) -> (A,CGFloat)
 @discardableResult public func >= <A:LayoutAnchor> (lhs:A, rhs:(A,CGFloat)) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( greaterThanOrEqualTo:rhs.0, constant:rhs.1)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func >= (lhs:NSLayoutXAxisAnchor, rhs:NSLayoutXAxisAnchor) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( greaterThanOrEqualTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func >= (lhs:NSLayoutYAxisAnchor, rhs:NSLayoutYAxisAnchor) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( greaterThanOrEqualTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func >= (lhs:NSLayoutDimension, rhs:NSLayoutDimension) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( greaterThanOrEqualTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func >= (lhs:NSLayoutDimension, rhs:CGFloat) -> NSLayoutConstraint
 {
 	let constraint = lhs.constraint( greaterThanOrEqualToConstant:rhs )
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
@@ -185,35 +192,35 @@ public func - <A:LayoutAnchor> (lhs:A, rhs:CGFloat) -> (A,CGFloat)
 @discardableResult public func <= <A:LayoutAnchor> (lhs:A, rhs:(A,CGFloat)) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( lessThanOrEqualTo:rhs.0, constant:rhs.1)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func <= (lhs:NSLayoutXAxisAnchor, rhs:NSLayoutXAxisAnchor) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( lessThanOrEqualTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func <= (lhs:NSLayoutYAxisAnchor, rhs:NSLayoutYAxisAnchor) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( lessThanOrEqualTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func <= (lhs:NSLayoutDimension, rhs:NSLayoutDimension) -> NSLayoutConstraint
 {
     let constraint = lhs.constraint( lessThanOrEqualTo:rhs, constant:0.0)
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 
 @discardableResult public func <= (lhs:NSLayoutDimension, rhs:CGFloat) -> NSLayoutConstraint
 {
 	let constraint = lhs.constraint( lessThanOrEqualToConstant:rhs )
-	constraint.isActive = true
+	constraint.isActive = isActiveForNewContraints
 	return constraint
 }
 

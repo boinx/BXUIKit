@@ -52,6 +52,15 @@ extension NSLayoutConstraint
 	}
 
 
+	/// Convenience function that sets the constraint priority and returns the constraint itself for easy function chaining
+	
+	@discardableResult public func priority(_ prio:NSLayoutConstraint.Priority) -> NSLayoutConstraint
+	{
+		self.priority = prio
+		return self
+	}
+
+
 	/// This convenience method sets the constant of a NSLayoutConstraint and returns it again, so method chaining is possible.
 	/// - parameter c: The new constant value
 	/// - returns: The NSLayoutConstraint (self) is returned again so that methods can be chained
