@@ -9,8 +9,10 @@
 
 #if os(iOS)
 import UIKit
+public typealias NSUILayoutPriority = UILayoutPriority
 #else
 import AppKit
+public typealias NSUILayoutPriority = NSLayoutConstraint.Priority
 #endif
 
 
@@ -54,7 +56,7 @@ extension NSLayoutConstraint
 
 	/// Convenience function that sets the constraint priority and returns the constraint itself for easy function chaining
 	
-	@discardableResult public func priority(_ prio:NSLayoutConstraint.Priority) -> NSLayoutConstraint
+	@discardableResult public func priority(_ prio:NSUILayoutPriority) -> NSLayoutConstraint
 	{
 		self.priority = prio
 		return self
