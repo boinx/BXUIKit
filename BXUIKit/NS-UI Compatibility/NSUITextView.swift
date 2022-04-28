@@ -217,7 +217,7 @@ public extension NSTextContainer
 // The following extensions provide a common API for both platforms that can be used in shared code. Please
 // note that the intValue order follow iOS conventions, i.e. left, center, right, justified.
 
-#if os(iOS)
+//#if os(iOS)
 
 extension NSTextAlignment
 {
@@ -236,49 +236,53 @@ extension NSTextAlignment
 	}
 }
 
-#endif
-
-
-#if os(macOS) && canImport(Combine)
-
-// Ugly hack: canImport(Combine) is a compile time check for macOS 10.15 SDK to make it build on macOS 10.13
-
-extension NSTextAlignment
-{
-	/// The order of intValue follows iOS conventions, i.e. left, center, right, justified.
-	
-	public init?(intValue:Int)
-	{
-		var value = intValue
-		value = NSTextAlignment.swapRightAndCenter(value)
-		self.init(rawValue:value)
-	}
-	
-	/// The order of intValue follows iOS conventions, i.e. left, center, right, justified.
-	
-	public var intValue:Int
-	{
-		var value = self.rawValue
-        value = NSTextAlignment.swapRightAndCenter(value)
-		return value
-	}
-	
-	private static func swapRightAndCenter(_ value:Int) -> Int
-	{
-		if value == NSTextAlignment.right.rawValue
-		{
-            return NSTextAlignment.center.rawValue
-		}
-		else if value == NSTextAlignment.center.rawValue
-		{
-            return NSTextAlignment.right.rawValue
-		}
-		
-		return value
-	}
-}
-
-#endif
+//#endif
+//
+//
+//#if os(macOS) && canImport(Combine)
+//
+//// Ugly hack: canImport(Combine) is a compile time check for macOS 10.15 SDK to make it build on macOS 10.13
+//
+//extension NSTextAlignment
+//{
+//	/// The order of intValue follows iOS conventions, i.e. left, center, right, justified.
+//
+//	public init?(intValue:Int)
+//	{
+//		var value = intValue
+//		value = NSTextAlignment.swapRightAndCenter(value)
+//		self.init(rawValue:value)
+//	}
+//
+//	/// The order of intValue follows iOS conventions, i.e. left, center, right, justified.
+//
+//	public var intValue:Int
+//	{
+//		var value = self.rawValue
+//        value = NSTextAlignment.swapRightAndCenter(value)
+//		return value
+//	}
+//
+//	private static func swapRightAndCenter(_ value:Int) -> Int
+//	{
+////		#if !TARGET_ABI_USES_IOS_VALUES
+//
+//		if value == NSTextAlignment.right.rawValue
+//		{
+//            return NSTextAlignment.center.rawValue
+//		}
+//		else if value == NSTextAlignment.center.rawValue
+//		{
+//            return NSTextAlignment.right.rawValue
+//		}
+//
+////		#endif
+//
+//		return value
+//	}
+//}
+//
+//#endif
 
 
 //----------------------------------------------------------------------------------------------------------------------
