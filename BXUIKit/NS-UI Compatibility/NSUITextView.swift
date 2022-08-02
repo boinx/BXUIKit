@@ -64,7 +64,7 @@ extension NSUITextView
 
 	/// Adds a convenience accessor to NSTextView (macOS) with the same signature as available on UITextView (iOS)
 	
-	open var attributedText : NSAttributedString!
+	public var attributedText : NSAttributedString!
 	{
 		set
 		{

@@ -37,7 +37,7 @@ extension NSUILabel
 
 	#if os(macOS)
 
-	open var text : String
+	public var text : String
 	{
 		set
 		{
