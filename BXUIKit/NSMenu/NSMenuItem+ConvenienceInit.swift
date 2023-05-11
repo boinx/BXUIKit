@@ -76,6 +76,20 @@ extension NSMenuItem
 		self.isEnabled = enabled
 		self.indentationLevel = indentationLevel
 	}
+	
+
+	/// Creates an NSMenuItem with a disabled, uppercased section name.
+
+	public convenience init(sectionName:String)
+	{
+		let name = sectionName.uppercased()
+		let title = NSAttributedString(string:name, attributes:[.font:NSFont.systemFont(ofSize:NSFont.smallSystemFontSize)])
+		
+		self.init(title:name, action:nil, keyEquivalent:"")
+		self.attributedTitle = title
+		self.isEnabled = false
+	}
+	
 }
 
 #endif
