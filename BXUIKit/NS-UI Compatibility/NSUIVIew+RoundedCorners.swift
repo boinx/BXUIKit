@@ -9,6 +9,13 @@
 import QuartzCore.CoreAnimation
 import BXSwiftUtils
 
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
+
+
 public extension NSUIView
 {
     #if os(macOS)

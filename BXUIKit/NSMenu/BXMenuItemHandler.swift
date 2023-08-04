@@ -83,7 +83,7 @@ public struct BXMenuItemHandler
 /// NSResponders that want to handle menu actions can implement this protocol. They need to provide the menuItemHandlers array and two short
 /// generic implementations of validateMenuItem(_:) and executeMenuItem(_:)
 
-public protocol BXMenuItemHandlerMixin : class
+public protocol BXMenuItemHandlerMixin : AnyObject
 {
 	// REQUIREMENTS
 	
