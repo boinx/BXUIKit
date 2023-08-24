@@ -19,6 +19,7 @@
 		48472C3721746B8D00549686 /* NSMenuItem+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48472C3621746B8D00549686 /* NSMenuItem+ConvenienceInit.swift */; };
 		D000BA61218998BF002249ED /* NSUIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000BA60218998BE002249ED /* NSUIView+Constraints.swift */; };
 		D0046E3321A6E02D005F315E /* NSUIView+Bugfixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0046E3221A6E02C005F315E /* NSUIView+Bugfixes.swift */; };
+		D01E8C032A97482100C53DCC /* BXFadingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E8C022A97482100C53DCC /* BXFadingTextField.swift */; };
 		D027AA2921805E6300249F03 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */; };
 		D05425102199844500BE2A42 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D054250F2199844500BE2A42 /* BXSwiftUtils.framework */; };
 		D05D0C0621C655D300FAF3CC /* NSUIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0521C655D300FAF3CC /* NSUIDocument.swift */; };
@@ -77,6 +78,7 @@
 		48472C3C21746BF100549686 /* AVAudioPlayer+Play.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Play.swift"; sourceTree = "<group>"; };
 		D000BA60218998BE002249ED /* NSUIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Constraints.swift"; sourceTree = "<group>"; };
 		D0046E3221A6E02C005F315E /* NSUIView+Bugfixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Bugfixes.swift"; sourceTree = "<group>"; };
+		D01E8C022A97482100C53DCC /* BXFadingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXFadingTextField.swift; sourceTree = "<group>"; };
 		D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Operators.swift"; sourceTree = "<group>"; };
 		D054250C2199825E00BE2A42 /* BXUIKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BXUIKit.xcconfig; sourceTree = "<group>"; };
 		D054250F2199844500BE2A42 /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +269,7 @@
 				D0C12FA224D99153009E5EE2 /* NSView+renderedImage.swift */,
 				D075CFCD260389F700D31EB5 /* NSView+isEnabled.swift */,
 				D0ADAE262599B7D2003174E9 /* NWindow+screen.swift */,
+				D01E8C022A97482100C53DCC /* BXFadingTextField.swift */,
 			);
 			path = NSView;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				D075CFCE260389F700D31EB5 /* NSView+isEnabled.swift in Sources */,
 				D0ADAE272599B7D2003174E9 /* NWindow+screen.swift in Sources */,
 				D06CC8FE21772FDF009C2991 /* NSUITextView.swift in Sources */,
+				D01E8C032A97482100C53DCC /* BXFadingTextField.swift in Sources */,
 				D0046E3321A6E02D005F315E /* NSUIView+Bugfixes.swift in Sources */,
 				D000BA61218998BF002249ED /* NSUIView+Constraints.swift in Sources */,
 				D0EBC68C2289605500DC7E52 /* UIApplication+frontmostViewController.swift in Sources */,
