@@ -1,3 +1,4 @@
 # Ingore binary frameworks in /Frameworks directory
 Frameworks/**/*
 !.gitkeep
+xcuserdata
