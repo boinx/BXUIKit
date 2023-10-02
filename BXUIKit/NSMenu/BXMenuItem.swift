@@ -8,7 +8,7 @@
 
 #if os(macOS)
 
-import Cocoa
+import AppKit
 
 // FIXME: This import is only for testing the "weak-linked" BXSwiftUtils for macOS builds. It is not actually needed in this file.
 import BXSwiftUtils
