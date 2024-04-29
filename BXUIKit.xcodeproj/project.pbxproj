@@ -604,11 +604,13 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXUIKit;
 				PRODUCT_NAME = BXUIKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
 			};
 			name = Debug;
 		};
@@ -632,10 +634,12 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.boinx.BXUIKit;
 				PRODUCT_NAME = BXUIKit;
 				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
 			};
 			name = Release;
 		};

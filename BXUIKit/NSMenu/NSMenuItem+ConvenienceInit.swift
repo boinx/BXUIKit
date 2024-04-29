@@ -10,6 +10,7 @@
 
 import AppKit
 import BXSwiftUtils
+import BXSwiftUI
 
 
 extension NSMenuItem
@@ -75,6 +76,11 @@ extension NSMenuItem
 		self.state = state
 		self.isEnabled = enabled
 		self.indentationLevel = indentationLevel
+		
+		if title.contains("[AI]")
+		{
+			self.attributedTitle = NSAttributedString(with:title)
+		}
 	}
 	
 
