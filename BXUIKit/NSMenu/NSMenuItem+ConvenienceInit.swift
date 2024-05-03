@@ -10,7 +10,6 @@
 
 import AppKit
 import BXSwiftUtils
-import BXSwiftUI
 
 
 extension NSMenuItem
