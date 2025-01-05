@@ -22,8 +22,7 @@ extension NSView
 	
 	public static var currentContext:CGContext?
 	{
-		guard let ptr = NSGraphicsContext.current?.graphicsPort else { return nil }
-		return Unmanaged<CGContext>.fromOpaque(ptr).takeUnretainedValue()
+		return NSGraphicsContext.current?.cgContext
 	}
 
 
