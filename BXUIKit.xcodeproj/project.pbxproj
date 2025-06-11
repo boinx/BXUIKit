@@ -20,6 +20,7 @@
 		D000BA61218998BF002249ED /* NSUIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D000BA60218998BE002249ED /* NSUIView+Constraints.swift */; };
 		D0046E3321A6E02D005F315E /* NSUIView+Bugfixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0046E3221A6E02C005F315E /* NSUIView+Bugfixes.swift */; };
 		D01E8C032A97482100C53DCC /* BXFadingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E8C022A97482100C53DCC /* BXFadingTextField.swift */; };
+		D02126D62DF9B35900BD74AB /* UIApplication+frontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02126D52DF9B35900BD74AB /* UIApplication+frontViewController.swift */; };
 		D027AA2921805E6300249F03 /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */; };
 		D05425102199844500BE2A42 /* BXSwiftUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D054250F2199844500BE2A42 /* BXSwiftUtils.framework */; };
 		D05D0C0621C655D300FAF3CC /* NSUIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D0C0521C655D300FAF3CC /* NSUIDocument.swift */; };
@@ -79,6 +80,7 @@
 		D000BA60218998BE002249ED /* NSUIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Constraints.swift"; sourceTree = "<group>"; };
 		D0046E3221A6E02C005F315E /* NSUIView+Bugfixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUIView+Bugfixes.swift"; sourceTree = "<group>"; };
 		D01E8C022A97482100C53DCC /* BXFadingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXFadingTextField.swift; sourceTree = "<group>"; };
+		D02126D52DF9B35900BD74AB /* UIApplication+frontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+frontViewController.swift"; sourceTree = "<group>"; };
 		D027AA2821805E6300249F03 /* NSLayoutConstraint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Operators.swift"; sourceTree = "<group>"; };
 		D054250C2199825E00BE2A42 /* BXUIKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BXUIKit.xcconfig; sourceTree = "<group>"; };
 		D054250F2199844500BE2A42 /* BXSwiftUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BXSwiftUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				D08962BD25B5DC3300E7491C /* NSApplication+visibleWindows.swift */,
+				D02126D52DF9B35900BD74AB /* UIApplication+frontViewController.swift */,
 			);
 			path = NSApplication;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				D087886B2189A64A00FE19B5 /* BXColumnView.swift in Sources */,
 				D08962C225B5DCFA00E7491C /* NSApplication+visibleWindows.swift in Sources */,
 				D06CC956217EFF53009C2991 /* NSLayoutConstraint+Chaining.swift in Sources */,
+				D02126D62DF9B35900BD74AB /* UIApplication+frontViewController.swift in Sources */,
 				481A258521759FF400FB8E9A /* NSUIView+Drawing.swift in Sources */,
 				D0C3A1682187092700E67851 /* NSUILayoutGuide.swift in Sources */,
 				481A25B72175AA7B00FB8E9A /* NSEvent+ModifierKeys.swift in Sources */,
