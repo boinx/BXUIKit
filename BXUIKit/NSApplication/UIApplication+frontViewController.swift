@@ -22,21 +22,7 @@ public extension UIApplication
 	
 	static var baseViewController : UIViewController?
 	{
-		if #available(iOS 15,*)
-		{
-			return UIApplication.shared
-				.connectedScenes
-				.compactMap { ($0 as? UIWindowScene)?.keyWindow }
-				.first?
-				.rootViewController
-		}
-		else
-		{
-			return UIApplication.shared
-				.windows
-				.first?
-				.rootViewController
-		}
+		return UIApplication.shared.activeKeyWindow?.rootViewController
 	}
 	
 	/// Returns the frontmost UIViewcontroller starting at the specified base
