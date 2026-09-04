@@ -69,7 +69,6 @@ extension NSUIFont
 	
 	public func withFamily(_ family:String) -> NSUIFont
 	{
-		let traits = self.fontDescriptor.symbolicTraits
 		let size = self.pointSize
 
 		#if os(iOS)
@@ -91,7 +90,7 @@ extension NSUIFont
 		// it does not match. The failure is transient rather than a font that is genuinely absent, which is why
 		// simply asking a second way is nearly always enough.
 		
-		if let font = NSFont.resolve(family:family, face:nil, traits:traits, size:size)
+		if let font = NSFont.resolve(family:family, face:nil, traits:self.fontDescriptor.object(forKey:.traits) as? [NSFontDescriptor.TraitKey:Any], size:size)
 		{
 			return font
 		}
@@ -183,45 +182,76 @@ public extension NSFont
 	/// Callers used to accept whatever came back, so an outage showed up as text silently reverting to Helvetica or to the system font - a wrong answer
 	/// with nothing anywhere to say so. Every candidate is now checked against the family that was asked for, and nil means the family really is unavailable.
 	
-	static func resolve(family:String, face:String?, traits:NSFontDescriptor.SymbolicTraits?, size:CGFloat) -> NSFont?
+	static func resolve(family:String, face:String?, traits:[NSFontDescriptor.TraitKey:Any]?, size:CGFloat) -> NSFont?
 	{
+		// TIERS, most specific first. Each one asks for strictly less than the one above it, so reaching a lower tier
+		// means giving the caller less than it asked for - a Light layer coming back Regular, say.
+		
+		var tiers:[NSFontDescriptor] = []
+		
+		if let face = face
+		{
+			tiers.append(NSFontDescriptor(fontAttributes:[ .family:family, .face:face ]))
+		}
+		
+		// The WHOLE traits dictionary. Weight is not a symbolic trait - `.bold` is, but Light, Medium, Semibold and
+		// the rest are a `.weight` number - so carrying only the symbolic traits drops every one of them.
+		
+		if let traits = traits, !traits.isEmpty
+		{
+			tiers.append(NSFontDescriptor(fontAttributes:[ .family:family, .traits:traits ]))
+		}
+		
+		// The symbolic traits alone, so a family that cannot match the exact weight still keeps bold or italic
+		
+		if let symbolic = (traits?[.symbolic] as? UInt32).map({ NSFontDescriptor.SymbolicTraits(rawValue:$0) }), !symbolic.isEmpty
+		{
+			tiers.append(NSFontDescriptor().withFamily(family).withSymbolicTraits(symbolic))
+		}
+		
+		// The family alone, which is the least the caller will accept
+		
+		tiers.append(NSFontDescriptor().withFamily(family))
+		
+		// EVERY TIER IS RETRIED BEFORE THE NEXT ONE IS TRIED. A transient matching failure and a family that
+		// genuinely has no such face both answer nil, so asking again is the only way to tell them apart - and
+		// dropping to the next tier on a first failure is exactly how a requested weight or trait goes missing.
+		// The cost is a few milliseconds on a family switch that really cannot be honoured, which nobody sees.
+		
+		for tier in tiers
+		{
+			for attempt in 0 ..< 3
+			{
+				if let font = Self.matching(tier, family:family, size:size) { return font }
+				
+				if attempt < 2 { Thread.sleep(forTimeInterval:0.001) }
+			}
+		}
+		
+		// Looking the family up by name goes through a different path than descriptor matching, so it is worth
+		// asking even when all of that has failed
+		
 		for attempt in 0 ..< 3
 		{
-			var attributes:[NSFontDescriptor.AttributeName:Any] = [ .family:family ]
-			if let face = face { attributes[.face] = face }
-			
-			// Most specific first: family plus face, then family plus traits, then family alone, then by name -
-			// which reaches the font through a different path than descriptor matching
-			
-			var descriptors = [NSFontDescriptor(fontAttributes:attributes)]
-			
-			if let traits = traits
-			{
-				descriptors.append(NSFontDescriptor().withFamily(family).withSymbolicTraits(traits))
-			}
-			
-			descriptors.append(NSFontDescriptor().withFamily(family))
-			
-			for descriptor in descriptors
-			{
-				if let font = NSFont(descriptor:descriptor, size:size), font.familyName == family
-				{
-					return font
-				}
-			}
-			
 			if let font = NSFont(name:family, size:size), font.familyName == family
 			{
 				return font.withSize(size)
 			}
 			
-			// Everything failed at once, which is what the outage looks like. Give it a moment and ask again -
-			// this costs nothing on the path that succeeds, and only ever runs when the answer would be wrong.
-			
 			if attempt < 2 { Thread.sleep(forTimeInterval:0.001) }
 		}
 		
 		return nil
+	}
+	
+	
+	/// Matches a descriptor, treating a font from any OTHER family as a failure rather than a result.
+	
+	private static func matching(_ descriptor:NSFontDescriptor, family:String, size:CGFloat) -> NSFont?
+	{
+		guard let font = NSFont(descriptor:descriptor, size:size), font.familyName == family else { return nil }
+		
+		return font
 	}
 }
 
