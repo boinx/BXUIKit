@@ -73,11 +73,32 @@ extension NSUIFont
 
 		#if os(iOS)
 		
-		var desc = UIFontDescriptor()
-	 	desc = desc.withFamily(family)
-	 	if let d = desc.withSymbolicTraits(traits) { desc = d }
-	 	
-		return UIFont(descriptor:desc, size:self.pointSize)
+		// TIERS, most specific first - the same ladder the macOS branch climbs, see NSFont.resolve(family:face:traits:size:)
+		// at the end of this file. Each tier asks for strictly less than the one above it.
+		//
+		// The WHOLE traits dictionary first. Weight is not a symbolic trait - `.bold` is, but Light, Medium, Semibold and
+		// the rest are a `.weight` number - so carrying only the symbolic traits drops every one of them.
+		
+		let traits = self.fontDescriptor.object(forKey:.traits) as? [UIFontDescriptor.TraitKey:Any]
+		
+		if let traits = traits, !traits.isEmpty
+		{
+			let desc = UIFontDescriptor(fontAttributes:[ .family:family, .traits:traits ])
+			if let font = Self.matching(desc, family:family, size:size) { return font }
+		}
+		
+		// The symbolic traits alone, so a family that cannot match the exact weight still keeps bold or italic
+		
+		if let symbolic = (traits?[.symbolic] as? UInt32).map({ UIFontDescriptor.SymbolicTraits(rawValue:$0) }), !symbolic.isEmpty,
+		   let desc = UIFontDescriptor().withFamily(family).withSymbolicTraits(symbolic)
+		{
+			if let font = Self.matching(desc, family:family, size:size) { return font }
+		}
+		
+		// The family alone, which is the least the caller will accept. Nothing is checked here because there is nowhere
+		// left to go: the SIZE is kept, which is the facet the caller did not ask to change.
+		
+		return UIFont(descriptor:UIFontDescriptor().withFamily(family), size:size)
 		
 		#else
 		
@@ -163,6 +184,28 @@ extension NSUIFont
 	
 	#endif
 }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+#if os(iOS)
+
+extension UIFont
+{
+	/// Matches a descriptor, treating a font from any OTHER family as a failure rather than a result.
+	///
+	/// UIFont(descriptor:size:) cannot fail - when nothing matches it substitutes a font without a word - so every
+	/// candidate has to be checked against the family that was asked for.
+	
+	fileprivate static func matching(_ descriptor:UIFontDescriptor, family:String, size:CGFloat) -> UIFont?
+	{
+		let font = UIFont(descriptor:descriptor, size:size)
+		return font.familyName == family ? font : nil
+	}
+}
+
+#endif
 
 
 //----------------------------------------------------------------------------------------------------------------------
